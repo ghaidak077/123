@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ghaidak.com/sitemap.xml
