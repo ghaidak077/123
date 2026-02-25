@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -11,6 +11,9 @@
     <meta name="theme-color" content="#030303">
     <link rel="icon" type="image/svg+xml" href="tab_logo.svg">
     <link rel="preload" as="image" href="1.webp">
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
     <style>
         @font-face { font-family: 'Space Mono'; src: url('fonts/SpaceMono-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
@@ -176,7 +179,6 @@
         .jumbo-heading { font-family:var(--font-h); font-size:clamp(3rem,6vw,5.5rem); line-height:.9; margin-bottom:4rem; letter-spacing:-.03em; color:var(--ink); text-transform:uppercase; }
         .profile-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
         
-        /* UPDATED: Removed box-shadow for clean look */
         .img-container { aspect-ratio:4/5; position:relative; width:100%; max-width:440px; border-radius:var(--r); overflow:hidden; }
         .img-inner { width:100%; height:100%; }
         .img-inner img { width:100%; height:100%; object-fit:cover; filter:grayscale(100%) contrast(1.1); transition:filter .8s ease,transform 1.2s var(--ease); }
@@ -287,10 +289,10 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<nav class="hud-nav glass hover-trigger" aria-label="Primary">
+<nav class="hud-nav glass hover-trigger" aria-label="Primary Navigation">
     <div class="hud-left">
         <a href="#hero" aria-label="Ghaidak Alosh Home">
-            <img src="logo.svg" alt="Ghaidak Alosh" class="nav-logo" onerror="this.outerHTML='<span style=\'font-family:var(--font-h);font-weight:800;font-size:1.4rem;letter-spacing:-.05em;color:var(--ink);\'>GA.</span>'" />
+            <img src="logo.svg" alt="Ghaidak Alosh Logo" class="nav-logo" onerror="this.outerHTML='<span style=\'font-family:var(--font-h);font-weight:800;font-size:1.4rem;letter-spacing:-.05em;color:var(--ink);\'>GA.</span>'" />
         </a>
     </div>
     <div class="hud-right-group">
@@ -300,7 +302,7 @@
         <a href="#testimonials" class="nav-link hide-mobile hover-trigger">Reputation</a>
         <a href="mailto:studio@ghaidak.com" class="btn-gold hover-trigger"><span>CONTACT</span></a>
     </div>
-    <button class="mobile-menu-btn hover-trigger" id="menuBtn" aria-label="Open menu">MENU</button>
+    <button class="mobile-menu-btn hover-trigger" id="menuBtn" aria-label="Open mobile menu">MENU</button>
 </nav>
 
 <div class="mobile-overlay" id="mobileOverlay">
@@ -344,7 +346,7 @@
         </div>
     </section>
 
-    <section class="marquee-section reveal-up">
+    <section class="marquee-section reveal-up" aria-hidden="true">
         <div class="marquee-track">
             <div class="marquee-content">
                 <span>SCALING BRANDS ACROSS INDUSTRIES</span><span class="divider">✦</span>
@@ -362,9 +364,9 @@
 
     <section id="expertise">
         <div class="section-wrapper">
-            <div class="section-header reveal-up">
+            <header class="section-header reveal-up">
                 <h2><span>HOW I WORK (03)</span><span>THE PROCESS</span></h2>
-            </div>
+            </header>
             
             <div class="process-list">
                 <div class="process-item reveal-up hover-trigger">
@@ -419,23 +421,23 @@
     </section>
 
     <section id="portfolio" class="portfolio-showcase">
-        <div class="portfolio-backgrounds">
-            <img src="1.webp" class="port-bg is-active" id="bg-1" alt="Wade Fit Studio" fetchpriority="high" decoding="sync">
-            <img data-src="2.webp" class="port-bg" id="bg-2" alt="Biz Talk Cards" loading="lazy" decoding="async">
-            <img data-src="3.webp" class="port-bg" id="bg-3" alt="Lumi Creative Agency" loading="lazy" decoding="async">
-            <img data-src="4.webp" class="port-bg" id="bg-4" alt="NovaTech Solutions" loading="lazy" decoding="async">
-            <img data-src="5.webp" class="port-bg" id="bg-5" alt="Al Nargis Beauty" loading="lazy" decoding="async">
+        <div class="portfolio-backgrounds" aria-hidden="true">
+            <img src="1.webp" class="port-bg is-active" id="bg-1" alt="Wade Fit Studio Background" fetchpriority="high" decoding="sync">
+            <img data-src="2.webp" class="port-bg" id="bg-2" alt="Biz Talk Cards Background" loading="lazy" decoding="async">
+            <img data-src="3.webp" class="port-bg" id="bg-3" alt="Lumi Creative Agency Background" loading="lazy" decoding="async">
+            <img data-src="4.webp" class="port-bg" id="bg-4" alt="NovaTech Solutions Background" loading="lazy" decoding="async">
+            <img data-src="5.webp" class="port-bg" id="bg-5" alt="Al Nargis Beauty Background" loading="lazy" decoding="async">
             <div class="port-overlay"></div>
         </div>
 
         <div class="portfolio-content">
-            <div class="section-header reveal-up" style="position:relative;z-index:10;margin-bottom:0">
+            <header class="section-header reveal-up" style="position:relative;z-index:10;margin-bottom:0">
                 <h2><span>PORTFOLIO (05)</span><span>SELECTED CASE STUDIES</span></h2>
-            </div>
+            </header>
 
             <a href="https://www.behance.net/gallery/144161981/Wade-Fit-Studio-Logo" target="_blank" rel="noopener noreferrer" class="port-item is-active hover-trigger" data-target="bg-1" aria-label="View Wade Fit Studio Project">
                 <div class="port-depth-num">01</div>
-                <img src="1.webp" class="mobile-port-bg" alt="Wade Fit Studio" loading="lazy" decoding="async">
+                <img src="1.webp" class="mobile-port-bg" alt="Wade Fit Studio Design" loading="lazy" decoding="async">
                 <div class="port-text-wrap">
                     <span class="port-meta">01 / FITNESS</span>
                     <h3 class="port-title">WADE FIT STUDIO</h3>
@@ -445,7 +447,7 @@
 
             <a href="https://www.behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-2" aria-label="View Biz Talk Cards Project">
                 <div class="port-depth-num">02</div>
-                <img src="2.webp" class="mobile-port-bg" alt="Biz Talk Cards" loading="lazy" decoding="async">
+                <img src="2.webp" class="mobile-port-bg" alt="Biz Talk Cards Design" loading="lazy" decoding="async">
                 <div class="port-text-wrap">
                     <span class="port-meta">02 / B2B ENTERPRISE</span>
                     <h3 class="port-title">BIZ TALK CARDS</h3>
@@ -455,7 +457,7 @@
 
             <a href="https://www.behance.net/gallery/162997763/LUMI-Creative-Agency-Logo" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-3" aria-label="View Lumi Creative Agency Project">
                 <div class="port-depth-num">03</div>
-                <img src="3.webp" class="mobile-port-bg" alt="Lumi Creative Agency" loading="lazy" decoding="async">
+                <img src="3.webp" class="mobile-port-bg" alt="Lumi Creative Agency Design" loading="lazy" decoding="async">
                 <div class="port-text-wrap">
                     <span class="port-meta">03 / AGENCY</span>
                     <h3 class="port-title">LUMI CREATIVE</h3>
@@ -465,7 +467,7 @@
 
             <a href="https://www.behance.net/gallery/234138399/NovaTech-Solutions" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-4" aria-label="View NovaTech Solutions Project">
                 <div class="port-depth-num">04</div>
-                <img src="4.webp" class="mobile-port-bg" alt="NovaTech Solutions" loading="lazy" decoding="async">
+                <img src="4.webp" class="mobile-port-bg" alt="NovaTech Solutions Design" loading="lazy" decoding="async">
                 <div class="port-text-wrap">
                     <span class="port-meta">04 / FINTECH</span>
                     <h3 class="port-title">NOVATECH</h3>
@@ -475,7 +477,7 @@
 
             <a href="https://www.behance.net/gallery/188005453/Al-Nargis-Beauty-Brand-Identity" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-5" aria-label="View Al Nargis Beauty Project">
                 <div class="port-depth-num">05</div>
-                <img src="5.webp" class="mobile-port-bg" alt="Al Nargis Beauty" loading="lazy" decoding="async">
+                <img src="5.webp" class="mobile-port-bg" alt="Al Nargis Beauty Design" loading="lazy" decoding="async">
                 <div class="port-text-wrap">
                     <span class="port-meta">05 / RETAIL</span>
                     <h3 class="port-title">AL NARGIS</h3>
@@ -487,17 +489,17 @@
 
     <section id="about" class="profile-section">
         <div class="profile-content">
-            <div class="profile-header reveal-up">
+            <header class="profile-header reveal-up">
                 <h2 class="jumbo-heading">THE<br>PARTNER</h2>
-            </div>
+            </header>
             <div class="profile-grid">
                 <div class="img-container reveal-up hover-trigger">
                     <div class="img-inner">
-                        <img src="me.webp" alt="Ghaidak Alosh | Brand Identity & Visual Strategy" loading="lazy">
+                        <img src="me.webp" alt="Ghaidak Alosh Profile Picture" loading="lazy">
                     </div>
                 </div>
                 <div class="bio-container reveal-up">
-                    <p class="bio-title">Ghaidak Alosh</p>
+                    <h3 class="bio-title">Ghaidak Alosh</h3>
                     <p class="bio-text">With 6+ years of experience and 200+ projects delivered, I bring clarity to growing businesses.</p>
                     <p class="bio-text">I work remotely with founders and companies across North America, Europe, and the Middle East. I own the visual problem. I return the solution.</p>
                     <p class="bio-text">High quality. Zero friction.</p>
@@ -528,9 +530,9 @@
     </section>
 
     <section id="testimonials" class="testimonials-section">
-        <div class="section-header reveal-up">
+        <header class="section-header reveal-up">
             <h2><span>REPUTATION (03)</span><span>CLIENT VOICES</span></h2>
-        </div>
+        </header>
         <div class="reviews-grid">
             <div class="review-card hover-trigger reveal-up">
                 <div class="stars">★★★★★</div>
@@ -579,196 +581,205 @@
     <span>Brand Identity & Visual Strategy · Worldwide</span>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js" defer></script>
 
-<script>
+<script defer>
 document.addEventListener('DOMContentLoaded', () => {
-    const mq     = window.matchMedia("(max-width:1024px)");
-    const noMo   = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-    let isMobile = mq.matches;
-    mq.addEventListener('change', e => { isMobile = e.matches; });
-
-    if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-
-    /* Scroll Progress Tracker */
-    const progressBar = document.getElementById('scrollProgress');
-    const updateProgress = () => {
-        const scrollPx = document.documentElement.scrollTop || document.body.scrollTop;
-        const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (scrollPx / winHeightPx) * 100;
-        progressBar.style.width = `${scrolled}%`;
-    };
-
-    const dot  = document.getElementById('cursorDot');
-    const ring = document.getElementById('cursorRing');
-
-    if (!isMobile && !noMo && window.gsap) {
-        gsap.set([dot, ring], { xPercent:-50, yPercent:-50 });
-        const xDot  = gsap.quickTo(dot,  "x", {duration:.08, ease:"none"});
-        const yDot  = gsap.quickTo(dot,  "y", {duration:.08, ease:"none"});
-        const xRing = gsap.quickTo(ring, "x", {duration:.5,  ease:"power3.out"});
-        const yRing = gsap.quickTo(ring, "y", {duration:.5,  ease:"power3.out"});
-
-        window.addEventListener("mousemove", e => {
-            xDot(e.clientX); yDot(e.clientY);
-            xRing(e.clientX); yRing(e.clientY);
-        });
-        document.querySelectorAll('.hover-trigger,a,button').forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-        });
-    }
-
-    const navEl = document.querySelector('.hud-nav');
-    const scrollTopBtn = document.getElementById('scrollTop');
-    let navScrolled = false, btnVisible = false;
-
-    window.addEventListener('scroll', () => {
-        updateProgress();
-        const s = window.scrollY;
-        const past = s > 60;
-        if (past !== navScrolled) {
-            navScrolled = past;
-            navEl?.classList.toggle('scrolled', past);
+    // Wrap initialization to ensure deferred scripts are loaded
+    const initScripts = () => {
+        if (!window.gsap || !window.ScrollTrigger || typeof Lenis === 'undefined') {
+            setTimeout(initScripts, 50);
+            return;
         }
-        const pastFold = s > 600;
-        if (pastFold !== btnVisible) {
-            btnVisible = pastFold;
-            scrollTopBtn?.classList.toggle('visible', pastFold);
+
+        const mq     = window.matchMedia("(max-width:1024px)");
+        const noMo   = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+        let isMobile = mq.matches;
+        mq.addEventListener('change', e => { isMobile = e.matches; });
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* Scroll Progress Tracker */
+        const progressBar = document.getElementById('scrollProgress');
+        const updateProgress = () => {
+            const scrollPx = document.documentElement.scrollTop || document.body.scrollTop;
+            const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (scrollPx / winHeightPx) * 100;
+            progressBar.style.width = `${scrolled}%`;
+        };
+
+        const dot  = document.getElementById('cursorDot');
+        const ring = document.getElementById('cursorRing');
+
+        if (!isMobile && !noMo) {
+            gsap.set([dot, ring], { xPercent:-50, yPercent:-50 });
+            const xDot  = gsap.quickTo(dot,  "x", {duration:.08, ease:"none"});
+            const yDot  = gsap.quickTo(dot,  "y", {duration:.08, ease:"none"});
+            const xRing = gsap.quickTo(ring, "x", {duration:.5,  ease:"power3.out"});
+            const yRing = gsap.quickTo(ring, "y", {duration:.5,  ease:"power3.out"});
+
+            window.addEventListener("mousemove", e => {
+                xDot(e.clientX); yDot(e.clientY);
+                xRing(e.clientX); yRing(e.clientY);
+            });
+            document.querySelectorAll('.hover-trigger,a,button').forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+            });
         }
-    }, { passive:true });
 
-    const menuBtn = document.getElementById('menuBtn');
-    const overlay = document.getElementById('mobileOverlay');
-    let lenisRef  = null;
+        const navEl = document.querySelector('.hud-nav');
+        const scrollTopBtn = document.getElementById('scrollTop');
+        let navScrolled = false, btnVisible = false;
 
-    menuBtn?.addEventListener('click', () => {
-        const open = overlay.classList.toggle('active');
-        menuBtn.textContent = open ? 'CLOSE' : 'MENU';
-        open ? lenisRef?.stop() : lenisRef?.start();
-    });
-    overlay?.querySelectorAll('.mobile-link').forEach(l => {
-        l.addEventListener('click', () => {
-            overlay.classList.remove('active');
-            menuBtn.textContent = 'MENU';
-            lenisRef?.start();
+        window.addEventListener('scroll', () => {
+            updateProgress();
+            const s = window.scrollY;
+            const past = s > 60;
+            if (past !== navScrolled) {
+                navScrolled = past;
+                navEl?.classList.toggle('scrolled', past);
+            }
+            const pastFold = s > 600;
+            if (pastFold !== btnVisible) {
+                btnVisible = pastFold;
+                scrollTopBtn?.classList.toggle('visible', pastFold);
+            }
+        }, { passive:true });
+
+        const menuBtn = document.getElementById('menuBtn');
+        const overlay = document.getElementById('mobileOverlay');
+        let lenisRef  = null;
+
+        menuBtn?.addEventListener('click', () => {
+            const open = overlay.classList.toggle('active');
+            menuBtn.textContent = open ? 'CLOSE' : 'MENU';
+            open ? lenisRef?.stop() : lenisRef?.start();
         });
-    });
-
-    if (typeof Lenis !== 'undefined' && !isMobile) {
-        lenisRef = new Lenis({
-            duration: 1.25,
-            lerp: .065,
-            easing: t => Math.min(1, 1.001 - Math.pow(2, -10*t)),
-            smoothTouch: false
-        });
-        const raf = t => { lenisRef.raf(t); requestAnimationFrame(raf); };
-        requestAnimationFrame(raf);
-
-        scrollTopBtn?.addEventListener('click', () => lenisRef.scrollTo(0));
-
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', function(e) {
-                const id = this.getAttribute('href');
-                if (id === '#') return;
-                const tgt = document.querySelector(id);
-                if (tgt) { e.preventDefault(); lenisRef.scrollTo(tgt, { offset:-80, duration:1.5 }); }
+        overlay?.querySelectorAll('.mobile-link').forEach(l => {
+            l.addEventListener('click', () => {
+                overlay.classList.remove('active');
+                menuBtn.textContent = 'MENU';
+                lenisRef?.start();
             });
         });
-    } else {
-        scrollTopBtn?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-    }
 
-    const portItems = document.querySelectorAll('.port-item');
-    const portBgs   = document.querySelectorAll('.port-bg');
-
-    if ('IntersectionObserver' in window && portItems.length > 0) {
-        const obs = new IntersectionObserver(entries => {
-            if (window.innerWidth <= 1024) return;
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                portItems.forEach(i => i.classList.remove('is-active'));
-                entry.target.classList.add('is-active');
-                const id = entry.target.getAttribute('data-target');
-                portBgs.forEach(b => b.classList.remove('is-active'));
-                const bg = document.getElementById(id);
-                if (bg) {
-                    if (bg.dataset.src) { bg.src = bg.dataset.src; delete bg.dataset.src; }
-                    bg.classList.add('is-active');
-                }
+        if (!isMobile) {
+            lenisRef = new Lenis({
+                duration: 1.25,
+                lerp: .065,
+                easing: t => Math.min(1, 1.001 - Math.pow(2, -10*t)),
+                smoothTouch: false
             });
-        }, { rootMargin:"-45% 0px -45% 0px", threshold:0 });
-        portItems.forEach(i => obs.observe(i));
-    }
+            const raf = t => { lenisRef.raf(t); requestAnimationFrame(raf); };
+            requestAnimationFrame(raf);
 
-    if (window.gsap && window.ScrollTrigger && !isMobile && !noMo) {
-        
-        const initialBg = document.getElementById('bg-1');
-        if (initialBg && portItems.length > 0) {
-            gsap.fromTo(initialBg,
-                { filter: 'blur(32px) brightness(0.1)', scale: 1.1 },
-                {
-                    filter: 'blur(0px) brightness(0.45)',
-                    scale: 1,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: portItems[0],
-                        start: 'top 85%',
-                        end: 'center center',
-                        scrub: 1.2
+            scrollTopBtn?.addEventListener('click', () => lenisRef.scrollTo(0));
+
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', function(e) {
+                    const id = this.getAttribute('href');
+                    if (id === '#') return;
+                    const tgt = document.querySelector(id);
+                    if (tgt) { e.preventDefault(); lenisRef.scrollTo(tgt, { offset:-80, duration:1.5 }); }
+                });
+            });
+        } else {
+            scrollTopBtn?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+        }
+
+        const portItems = document.querySelectorAll('.port-item');
+        const portBgs   = document.querySelectorAll('.port-bg');
+
+        if ('IntersectionObserver' in window && portItems.length > 0) {
+            const obs = new IntersectionObserver(entries => {
+                if (window.innerWidth <= 1024) return;
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    portItems.forEach(i => i.classList.remove('is-active'));
+                    entry.target.classList.add('is-active');
+                    const id = entry.target.getAttribute('data-target');
+                    portBgs.forEach(b => b.classList.remove('is-active'));
+                    const bg = document.getElementById(id);
+                    if (bg) {
+                        if (bg.dataset.src) { bg.src = bg.dataset.src; delete bg.dataset.src; }
+                        bg.classList.add('is-active');
                     }
-                }
-            );
+                });
+            }, { rootMargin:"-45% 0px -45% 0px", threshold:0 });
+            portItems.forEach(i => obs.observe(i));
         }
 
-        portItems.forEach((item, idx) => {
-            gsap.fromTo(item.querySelector('.port-text-wrap'),
-                { z: -40, rotateX: 4 },
-                {
-                    z: 0, rotateX: 0,
-                    ease: "none",
-                    scrollTrigger: { trigger: item, start: "top bottom", end: "center center", scrub: 1.2 }
-                }
-            );
-            gsap.to(item.querySelector('.port-text-wrap'), {
-                z: -20, rotateX: -3,
-                ease: "none",
-                scrollTrigger: { trigger: item, start: "center center", end: "bottom top", scrub: 1.2 }
-            });
-            const bg = document.getElementById(item.dataset.target);
-            if (bg) {
-                gsap.fromTo(bg,
-                    { yPercent: -8 },
-                    { yPercent: 8, ease: "none", scrollTrigger: { trigger: item, start: "top bottom", end: "bottom top", scrub: 1.5 } }
+        if (!isMobile && !noMo) {
+            const initialBg = document.getElementById('bg-1');
+            if (initialBg && portItems.length > 0) {
+                gsap.fromTo(initialBg,
+                    { filter: 'blur(32px) brightness(0.1)', scale: 1.1 },
+                    {
+                        filter: 'blur(0px) brightness(0.45)',
+                        scale: 1,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: portItems[0],
+                            start: 'top 85%',
+                            end: 'center center',
+                            scrub: 1.2
+                        }
+                    }
                 );
             }
-        });
-    }
 
-    if (window.gsap && window.ScrollTrigger && !noMo) {
-        gsap.utils.toArray('.reveal-up').forEach(el => {
-            gsap.fromTo(el,
-                { y:44, opacity:0 },
-                { scrollTrigger:{ trigger:el, start:"top 87%" }, y:0, opacity:1, duration:1.15, ease:"power3.out" }
-            );
-        });
+            portItems.forEach((item, idx) => {
+                gsap.fromTo(item.querySelector('.port-text-wrap'),
+                    { z: -40, rotateX: 4 },
+                    {
+                        z: 0, rotateX: 0,
+                        ease: "none",
+                        scrollTrigger: { trigger: item, start: "top bottom", end: "center center", scrub: 1.2 }
+                    }
+                );
+                gsap.to(item.querySelector('.port-text-wrap'), {
+                    z: -20, rotateX: -3,
+                    ease: "none",
+                    scrollTrigger: { trigger: item, start: "center center", end: "bottom top", scrub: 1.2 }
+                });
+                const bg = document.getElementById(item.dataset.target);
+                if (bg) {
+                    gsap.fromTo(bg,
+                        { yPercent: -8 },
+                        { yPercent: 8, ease: "none", scrollTrigger: { trigger: item, start: "top bottom", end: "bottom top", scrub: 1.5 } }
+                    );
+                }
+            });
+        }
 
-        gsap.utils.toArray('.process-item').forEach((el, i) => {
-            gsap.fromTo(el,
-                { y:50, opacity:0 },
-                { scrollTrigger:{ trigger:el, start:"top 88%" }, y:0, opacity:1, duration:1, ease:"power3.out", delay: i * .08 }
-            );
-        });
+        if (!noMo) {
+            gsap.utils.toArray('.reveal-up').forEach(el => {
+                gsap.fromTo(el,
+                    { y:44, opacity:0 },
+                    { scrollTrigger:{ trigger:el, start:"top 87%" }, y:0, opacity:1, duration:1.15, ease:"power3.out" }
+                );
+            });
 
-        gsap.utils.toArray('.cap-card').forEach((el, i) => {
-            gsap.fromTo(el,
-                { y:35, opacity:0 },
-                { scrollTrigger:{ trigger:el, start:"top 90%" }, y:0, opacity:1, duration:.9, ease:"power3.out", delay: i * .07 }
-            );
-        });
-    }
+            gsap.utils.toArray('.process-item').forEach((el, i) => {
+                gsap.fromTo(el,
+                    { y:50, opacity:0 },
+                    { scrollTrigger:{ trigger:el, start:"top 88%" }, y:0, opacity:1, duration:1, ease:"power3.out", delay: i * .08 }
+                );
+            });
+
+            gsap.utils.toArray('.cap-card').forEach((el, i) => {
+                gsap.fromTo(el,
+                    { y:35, opacity:0 },
+                    { scrollTrigger:{ trigger:el, start:"top 90%" }, y:0, opacity:1, duration:.9, ease:"power3.out", delay: i * .07 }
+                );
+            });
+        }
+    };
+
+    initScripts();
 });
 </script>
 </body>
