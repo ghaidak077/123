@@ -94,7 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 portBgs.forEach(b => b.classList.remove('is-active'));
                 const bg = document.getElementById(id);
                 if (bg) {
-                    if (bg.dataset.src) { bg.src = bg.dataset.src; delete bg.dataset.src; }
+                    if (bg.dataset.src) { 
+                        bg.src = bg.dataset.src; 
+                        delete bg.dataset.src; 
+                    }
                     bg.classList.add('is-active');
                 }
             });
