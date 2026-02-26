@@ -2,10 +2,10 @@
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Ghaidak Alosh | Senior Brand & SaaS Designer</title>
     <meta name="description" content="Senior visual strategist engineering brand identities and UI/UX systems for scaling SaaS and international enterprises.">
-    
+
     <link rel="canonical" href="https://ghaidak.com/">
     <meta property="og:title" content="Ghaidak Alosh | Brand Identity & Visual Strategy">
     <meta property="og:description" content="Senior visual strategist engineering brand identities and UI/UX systems.">
@@ -15,23 +15,34 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ghaidak Alosh | Brand Identity">
     <meta name="twitter:image" content="https://ghaidak.com/og-image.webp">
-    
+
+    <!-- Apple / PWA -->
+    <meta name="theme-color" content="#030303" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#030303">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Ghaidak">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
     <link rel="icon" type="image/svg+xml" href="tab_logo.svg">
+    <link rel="apple-touch-icon" href="tab_logo.svg">
     
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
     <link rel="preload" as="image" href="1.avif" type="image/avif">
+    <link rel="preload" as="image" href="2.avif" type="image/avif">
+    <link rel="preload" as="image" href="3.avif" type="image/avif">
+    <link rel="preload" as="image" href="4.avif" type="image/avif">
+    <link rel="preload" as="image" href="5.avif" type="image/avif">
     <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-ExtraBold.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/SpaceMono-Regular.woff2" crossorigin>
 
     <link rel="stylesheet" href="main.css">
-    
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-    <script defer src="app.js"></script>
+
+    <!-- Remove no-js immediately so CSS fallbacks work if JS fails -->
+    <script>document.documentElement.classList.remove('no-js');</script>
 
     <script type="application/ld+json">
     {
@@ -40,7 +51,6 @@
       "name": "Ghaidak Alosh Design Studio",
       "image": "https://ghaidak.com/me.avif",
       "url": "https://ghaidak.com",
-      "email": "studio@ghaidak.com",
       "priceRange": "$$$",
       "address": {
         "@type": "PostalAddress",
@@ -56,6 +66,8 @@
 <body>
 
 <div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <div class="vfx-core">
     <div class="vfx-grid"></div>
@@ -67,28 +79,28 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<nav class="hud-nav glass" aria-label="Primary">
+<nav class="hud-nav glass hover-trigger" aria-label="Primary">
     <div class="hud-left">
         <a href="#hero" aria-label="Ghaidak Alosh Home">
             <img src="logo.svg" alt="Ghaidak Alosh" class="nav-logo" width="130" height="22" onerror="this.outerHTML='<span style=\'font-family:var(--font-h);font-weight:800;font-size:1.4rem;letter-spacing:-.05em;color:var(--ink);\'>GA.</span>'" />
         </a>
     </div>
     <div class="hud-right-group">
-        <a href="#expertise" class="nav-link hide-mobile">Expertise</a>
-        <a href="#portfolio" class="nav-link hide-mobile">Work</a>
-        <a href="#about" class="nav-link hide-mobile">Profile</a>
-        <a href="#testimonials" class="nav-link hide-mobile">Reputation</a>
-        <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="btn-gold"><span>START PROJECT</span></a>
+        <a href="#expertise" class="nav-link hide-mobile hover-trigger">Expertise</a>
+        <a href="#portfolio" class="nav-link hide-mobile hover-trigger">Work</a>
+        <a href="#about" class="nav-link hide-mobile hover-trigger">Profile</a>
+        <a href="#testimonials" class="nav-link hide-mobile hover-trigger">Reputation</a>
+        <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="btn-gold hover-trigger"><span>START PROJECT</span></a>
     </div>
-    <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">MENU</button>
+    <button class="mobile-menu-btn hover-trigger" id="menuBtn" aria-label="Open menu">MENU</button>
 </nav>
 
 <div class="mobile-overlay" id="mobileOverlay">
-    <a href="#expertise" class="mobile-link">Expertise</a>
-    <a href="#portfolio" class="mobile-link">Work</a>
-    <a href="#about" class="mobile-link">Profile</a>
-    <a href="#testimonials" class="mobile-link">Reputation</a>
-    <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="mobile-link">Contact</a>
+    <a href="#expertise" class="mobile-link hover-trigger">Expertise</a>
+    <a href="#portfolio" class="mobile-link hover-trigger">Work</a>
+    <a href="#about" class="mobile-link hover-trigger">Profile</a>
+    <a href="#testimonials" class="mobile-link hover-trigger">Reputation</a>
+    <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="mobile-link hover-trigger">Contact</a>
 </div>
 
 <main id="main">
@@ -97,13 +109,13 @@
             <div class="hero-left">
                 <div class="hero-kicker">Senior Visual Strategist</div>
                 <h1 class="mega-type">
-                    DESIGNING DIGITAL TRUST FOR<br>
-                    <span class="accent-text">AMBITIOUS FOUNDERS.</span>
+                    TURN YOUR BRAND<br>
+                    <span class="accent-text">INTO AN ASSET.</span>
                 </h1>
             </div>
             <div class="hero-spec-panel">
                 <div class="spec-row"><span class="spec-label">Experience</span><span class="spec-val gold">6+ Years</span></div>
-                <div class="spec-row"><span class="spec-label">Projects Delivered</span><span class="spec-val">50+</span></div>
+                <div class="spec-row"><span class="spec-label">Projects Delivered</span><span class="spec-val">200+</span></div>
                 <div class="spec-row"><span class="spec-label">Client Regions</span><span class="spec-val">N. America · EU · MENA</span></div>
                 <div class="spec-row"><span class="spec-label">Specialisation</span><span class="spec-val">Brand & SaaS Systems</span></div>
             </div>
@@ -112,8 +124,8 @@
         <div class="hero-bottom reveal-up">
             <p class="hero-desc">I engineer digital trust and authority for scaling companies. High-fidelity execution. Zero agency bloat. One dedicated partner.</p>
             <div class="cta-group">
-                <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="btn-gold" aria-label="Start Project"><span>START PROJECT</span></a>
-                <a href="#portfolio" class="btn-ghost"><span>VIEW WORK</span></a>
+                <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="btn-gold hover-trigger" aria-label="Start Project on WhatsApp"><span>START PROJECT</span></a>
+                <a href="https://tally.so/r/mRDQkK" target="_blank" rel="noopener" class="btn-ghost hover-trigger"><span>APPLY FOR PARTNERSHIP</span></a>
             </div>
         </div>
 
@@ -128,10 +140,10 @@
             <div class="marquee-content">
                 <span>SCALING BRANDS ACROSS INDUSTRIES</span><span class="divider">✦</span>
                 <span>SENIOR VISUAL STRATEGIST</span><span class="divider">✦</span>
-                <span>50+ PROJECTS DELIVERED</span><span class="divider">✦</span>
+                <span>200+ PROJECTS DELIVERED</span><span class="divider">✦</span>
                 <span>SCALING BRANDS ACROSS INDUSTRIES</span><span class="divider">✦</span>
                 <span>SENIOR VISUAL STRATEGIST</span><span class="divider">✦</span>
-                <span>50+ PROJECTS DELIVERED</span><span class="divider">✦</span>
+                <span>200+ PROJECTS DELIVERED</span><span class="divider">✦</span>
             </div>
         </div>
     </section>
@@ -143,21 +155,21 @@
             </div>
             
             <div class="process-list">
-                <div class="process-item reveal-up">
+                <div class="process-item reveal-up hover-trigger">
                     <span class="process-num">01</span>
                     <div>
                         <h3 class="process-title">Diagnose before design.</h3>
                         <p class="process-body">Most brand problems are <strong>positioning problems in disguise</strong>. Before opening Figma, I audit your market and map your audience. I find the visual gap your brand will own.</p>
                     </div>
                 </div>
-                <div class="process-item reveal-up">
+                <div class="process-item reveal-up hover-trigger">
                     <span class="process-num">02</span>
                     <div>
                         <h3 class="process-title">Build the entire system.</h3>
                         <p class="process-body">One point of contact. <strong>Identity, UI/UX, marketing decks, and social systems</strong>. No handoffs. A completely consistent visual language, built by one mind.</p>
                     </div>
                 </div>
-                <div class="process-item reveal-up">
+                <div class="process-item reveal-up hover-trigger">
                     <span class="process-num">03</span>
                     <div>
                         <h3 class="process-title">Hand over and step back.</h3>
@@ -169,22 +181,22 @@
             <div class="value-prop reveal-up">
                 <h2 class="vp-statement">CORE <strong>CAPABILITIES</strong></h2>
                 <div class="capabilities-grid">
-                    <div class="cap-card">
+                    <div class="cap-card hover-trigger">
                         <div class="cap-icon">✦</div>
                         <h4>Brand Identity</h4>
                         <p>Logo architecture, typography, and robust global guidelines.</p>
                     </div>
-                    <div class="cap-card">
+                    <div class="cap-card hover-trigger">
                         <div class="cap-icon">✦</div>
                         <h4>Marketing Assets</h4>
                         <p>High-converting pitch decks and comprehensive brand collateral.</p>
                     </div>
-                    <div class="cap-card">
+                    <div class="cap-card hover-trigger">
                         <div class="cap-icon">✦</div>
                         <h4>UI & Product Design</h4>
                         <p>Web applications and SaaS interfaces. Scalable component libraries.</p>
                     </div>
-                    <div class="cap-card">
+                    <div class="cap-card hover-trigger">
                         <div class="cap-icon">✦</div>
                         <h4>Digital Platforms</h4>
                         <p>Flawless web execution across English and Arabic layouts.</p>
@@ -196,11 +208,11 @@
 
     <section id="portfolio" class="portfolio-showcase">
         <div class="portfolio-backgrounds">
-            <img src="1.avif" width="1200" height="1500" class="port-bg is-active" id="bg-1" alt="Wade Fit Studio" fetchpriority="high" decoding="sync">
-            <img data-src="2.avif" width="1200" height="1500" class="port-bg" id="bg-2" alt="Biz Talk Cards" loading="lazy" decoding="async">
-            <img data-src="3.avif" width="1200" height="1500" class="port-bg" id="bg-3" alt="Lumi Creative Agency" loading="lazy" decoding="async">
-            <img data-src="4.avif" width="1200" height="1500" class="port-bg" id="bg-4" alt="NovaTech Solutions" loading="lazy" decoding="async">
-            <img data-src="5.avif" width="1200" height="1500" class="port-bg" id="bg-5" alt="Al Nargis Beauty" loading="lazy" decoding="async">
+            <img src="1.avif" class="port-bg is-active" id="bg-1" alt="Wade Fit Studio"     width="1920" height="1080" fetchpriority="high" loading="eager" decoding="sync">
+            <img src="2.avif" class="port-bg"           id="bg-2" alt="Biz Talk Cards"       width="1920" height="1080" fetchpriority="high" loading="eager" decoding="async">
+            <img src="3.avif" class="port-bg"           id="bg-3" alt="Lumi Creative Agency" width="1920" height="1080" fetchpriority="high" loading="eager" decoding="async">
+            <img src="4.avif" class="port-bg"           id="bg-4" alt="NovaTech Solutions"   width="1920" height="1080" fetchpriority="high" loading="eager" decoding="async">
+            <img src="5.avif" class="port-bg"           id="bg-5" alt="Al Nargis Beauty"     width="1920" height="1080" fetchpriority="high" loading="eager" decoding="async">
             <div class="port-overlay"></div>
         </div>
 
@@ -209,7 +221,7 @@
                 <h2><span>PORTFOLIO (05)</span><span>SELECTED CASE STUDIES</span></h2>
             </div>
 
-            <a href="https://www.behance.net/gallery/144161981/Wade-Fit-Studio-Logo" target="_blank" rel="noopener noreferrer" class="port-item is-active" data-target="bg-1" aria-label="View Wade Fit Studio Project">
+            <a href="https://www.behance.net/gallery/144161981/Wade-Fit-Studio-Logo" target="_blank" rel="noopener noreferrer" class="port-item is-active hover-trigger" data-target="bg-1" aria-label="View Wade Fit Studio Project">
                 <div class="port-depth-num">01</div>
                 <div class="port-text-wrap">
                     <span class="port-meta">01 / FITNESS</span>
@@ -218,7 +230,7 @@
                 </div>
             </a>
 
-            <a href="https://www.behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="port-item" data-target="bg-2" aria-label="View Biz Talk Cards Project">
+            <a href="https://www.behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-2" aria-label="View Biz Talk Cards Project">
                 <div class="port-depth-num">02</div>
                 <div class="port-text-wrap">
                     <span class="port-meta">02 / B2B ENTERPRISE</span>
@@ -227,7 +239,7 @@
                 </div>
             </a>
 
-            <a href="https://www.behance.net/gallery/162997763/LUMI-Creative-Agency-Logo" target="_blank" rel="noopener noreferrer" class="port-item" data-target="bg-3" aria-label="View Lumi Creative Agency Project">
+            <a href="https://www.behance.net/gallery/162997763/LUMI-Creative-Agency-Logo" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-3" aria-label="View Lumi Creative Agency Project">
                 <div class="port-depth-num">03</div>
                 <div class="port-text-wrap">
                     <span class="port-meta">03 / AGENCY</span>
@@ -236,7 +248,7 @@
                 </div>
             </a>
 
-            <a href="https://www.behance.net/gallery/234138399/NovaTech-Solutions" target="_blank" rel="noopener noreferrer" class="port-item" data-target="bg-4" aria-label="View NovaTech Solutions Project">
+            <a href="https://www.behance.net/gallery/234138399/NovaTech-Solutions" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-4" aria-label="View NovaTech Solutions Project">
                 <div class="port-depth-num">04</div>
                 <div class="port-text-wrap">
                     <span class="port-meta">04 / FINTECH</span>
@@ -245,7 +257,7 @@
                 </div>
             </a>
 
-            <a href="https://www.behance.net/gallery/188005453/Al-Nargis-Beauty-Brand-Identity" target="_blank" rel="noopener noreferrer" class="port-item" data-target="bg-5" aria-label="View Al Nargis Beauty Project">
+            <a href="https://www.behance.net/gallery/188005453/Al-Nargis-Beauty-Brand-Identity" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-5" aria-label="View Al Nargis Beauty Project">
                 <div class="port-depth-num">05</div>
                 <div class="port-text-wrap">
                     <span class="port-meta">05 / RETAIL</span>
@@ -262,35 +274,35 @@
                 <h2 class="jumbo-heading">THE<br>PARTNER</h2>
             </div>
             <div class="profile-grid">
-                <div class="img-container reveal-up">
+                <div class="img-container reveal-up hover-trigger">
                     <div class="img-inner">
-                        <img src="me.avif" alt="Ghaidak Alosh | Senior Graphic Designer" width="440" height="550" loading="lazy" decoding="async">
+                        <img src="me.avif" alt="Ghaidak Alosh | Senior Graphic Designer" width="420" height="560" loading="lazy" decoding="async">
                     </div>
                 </div>
                 <div class="bio-container reveal-up">
                     <p class="bio-title">Ghaidak Alosh</p>
-                    <p class="bio-text">With 6+ years of experience and 50+ projects delivered, I architect scalable brand infrastructure for global businesses.</p>
+                    <p class="bio-text">With 6+ years of experience and 200+ projects delivered, I architect scalable brand infrastructure for global businesses.</p>
                     <p class="bio-text">I operate globally, serving enterprises across North America, Europe, and the Middle East. I own the visual problem. I return the solution.</p>
                     
                     <div class="stats-row">
-                        <div class="stat">
+                        <div class="stat hover-trigger">
                             <span class="label">Availability</span>
                             <span class="val">Limited Retainers Open</span>
                         </div>
-                        <div class="stat">
+                        <div class="stat hover-trigger">
                             <span class="label">Location</span>
                             <span class="val">Global Remote</span>
                         </div>
-                        <div class="stat">
+                        <div class="stat hover-trigger">
                             <span class="label">Languages</span>
                             <span class="val">English / Arabic</span>
                         </div>
                     </div>
 
                     <div class="social-row">
-                        <a href="https://linkedin.com/in/ghaidak-alosh" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
-                        <a href="https://behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="social-link">Behance</a>
-                        <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="social-link">WhatsApp</a>
+                        <a href="https://linkedin.com/in/ghaidak-alosh" target="_blank" rel="noopener noreferrer" class="social-link hover-trigger">LinkedIn</a>
+                        <a href="https://behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="social-link hover-trigger">Behance</a>
+                        <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="social-link hover-trigger">WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -302,7 +314,7 @@
             <h2><span>REPUTATION (03)</span><span>CLIENT VOICES</span></h2>
         </div>
         <div class="reviews-grid">
-            <div class="review-card reveal-up">
+            <div class="review-card hover-trigger reveal-up">
                 <div class="stars">★★★★★</div>
                 <p class="review-text">"It is rare to find premium quality combined with speed. Deadlines are respected. Delivery is production-ready."</p>
                 <div class="review-author">
@@ -310,7 +322,7 @@
                     <span>Founder, B2B Enterprise SaaS | UAE</span>
                 </div>
             </div>
-            <div class="review-card reveal-up" style="transition-delay:.1s">
+            <div class="review-card hover-trigger reveal-up" style="transition-delay:.1s">
                 <div class="stars">★★★★★</div>
                 <p class="review-text">"He listens deeply, challenges ideas honestly, and delivers at a very high level."</p>
                 <div class="review-author">
@@ -318,7 +330,7 @@
                     <span>CEO, NovaKepler LLC | USA</span>
                 </div>
             </div>
-            <div class="review-card reveal-up" style="transition-delay:.2s">
+            <div class="review-card hover-trigger reveal-up" style="transition-delay:.2s">
                 <div class="stars">★★★★★</div>
                 <p class="review-text">"His work feels alive. Strategic, sharp, and executed with precision."</p>
                 <div class="review-author">
@@ -336,7 +348,8 @@
             <h2 class="cta-headline">Let's build<br>something<br><span class="cta-accent">valuable.</span></h2>
             <p class="cta-sub">One partnership. Full ownership. From strategy to final delivery, without the agency overhead.</p>
             <div class="cta-actions">
-                <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="btn-gold" style="height:52px;font-size:.8rem;padding:0 2.5rem;width:100%;max-width:320px;"><span>START PROJECT</span></a>
+                <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="btn-gold hover-trigger"><span>START ON WHATSAPP</span></a>
+                <a href="https://tally.so/r/mRDQkK" target="_blank" rel="noopener" class="btn-ghost hover-trigger"><span>APPLY FOR PARTNERSHIP</span></a>
             </div>
         </div>
     </section>
@@ -346,6 +359,11 @@
     <span>© 2026 Ghaidak Alosh. All rights reserved.</span>
     <span>Brand Identity & Visual Strategy · Worldwide</span>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="app.js" defer></script>
 
 </body>
 </html>
