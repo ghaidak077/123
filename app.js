@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 2026 Speculation Rules API for zero-latency WhatsApp conversion routing
+    if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+        const specScript = document.createElement('script');
+        specScript.type = 'speculationrules';
+        specScript.textContent = JSON.stringify({
+            prerender: [{ source: 'list', urls: ['https://wa.link/649ato'] }]
+        });
+        document.head.appendChild(specScript);
+    }
+
     const mq     = window.matchMedia("(max-width:1024px)");
     const noMo   = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     let isMobile = mq.matches;
@@ -49,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         menuBtn.textContent = open ? 'CLOSE' : 'MENU';
         open ? lenisRef?.stop() : lenisRef?.start();
     });
+    
     overlay?.querySelectorAll('.mobile-link').forEach(l => {
         l.addEventListener('click', () => {
             overlay.classList.remove('active');
@@ -146,9 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
             }
         });
-    }
 
-    if (window.gsap && window.ScrollTrigger && !noMo) {
         gsap.utils.toArray('.reveal-up').forEach(el => {
             gsap.fromTo(el,
                 { y:44, opacity:0 },
