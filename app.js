@@ -14,26 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = `${scrolled}%`;
     };
 
-    const dot  = document.getElementById('cursorDot');
-    const ring = document.getElementById('cursorRing');
-
-    if (!isMobile && !noMo && window.gsap) {
-        gsap.set([dot, ring], { xPercent:-50, yPercent:-50 });
-        const xDot  = gsap.quickTo(dot,  "x", {duration:.08, ease:"none"});
-        const yDot  = gsap.quickTo(dot,  "y", {duration:.08, ease:"none"});
-        const xRing = gsap.quickTo(ring, "x", {duration:.5,  ease:"power3.out"});
-        const yRing = gsap.quickTo(ring, "y", {duration:.5,  ease:"power3.out"});
-
-        window.addEventListener("mousemove", e => {
-            xDot(e.clientX); yDot(e.clientY);
-            xRing(e.clientX); yRing(e.clientY);
-        });
-        document.querySelectorAll('.hover-trigger,a,button').forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-        });
-    }
-
     const navEl = document.querySelector('.hud-nav');
     const scrollTopBtn = document.getElementById('scrollTop');
     let navScrolled = false, btnVisible = false;
