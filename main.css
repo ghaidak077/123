@@ -26,24 +26,18 @@
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased; }
 html { height:100%; background:var(--bg); scroll-behavior:auto; }
-body { background:transparent; color:var(--ink); font-family:var(--font-b); overflow-x:hidden; cursor:none; }
+body { background:transparent; color:var(--ink); font-family:var(--font-b); overflow-x:hidden; }
 img  { display:block; max-width:100%; height:auto; }
-a, button { color:inherit; text-decoration:none; border:none; background:none; font:inherit; cursor:none; outline:none; display:inline-flex; align-items:center; justify-content:center; }
+a, button { color:inherit; text-decoration:none; border:none; background:none; font:inherit; cursor:pointer; outline:none; display:inline-flex; align-items:center; justify-content:center; }
 button:focus-visible, a:focus-visible { outline:2px solid var(--accent); outline-offset:4px; border-radius:var(--r); }
 
 .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); z-index: 9999; width: 0%; box-shadow: 0 0 10px var(--accent); pointer-events: none; transition: width 0.1s linear; }
-
-.cursor-dot { width:5px; height:5px; background:var(--accent); position:fixed; top:0; left:0; border-radius:50%; z-index:9999; pointer-events:none; box-shadow:0 0 10px var(--accent); }
-.cursor-ring { width:38px; height:38px; border:1.5px solid rgba(255,198,62,0.45); position:fixed; top:0; left:0; border-radius:50%; z-index:9998; pointer-events:none; transition:width .35s var(--ease),height .35s var(--ease),background .35s,border-color .35s; }
-body.hovering .cursor-ring { width:70px; height:70px; background:rgba(255,255,255,.95); border-color:transparent; mix-blend-mode:exclusion; }
-body.hovering .cursor-dot { opacity:0; }
-@media(max-width:1024px){ .cursor-dot,.cursor-ring{ display:none !important; } body,a,button{ cursor:auto !important; } }
 
 .vfx-core { position:fixed; inset:0; z-index:-3; background:var(--bg); overflow:hidden; pointer-events:none; will-change: transform; }
 .vfx-grid { position:absolute; inset:-50%; top:0; background-image:linear-gradient(to right,rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.018) 1px,transparent 1px); background-size:80px 80px; transform:perspective(900px) rotateX(55deg) translateY(-80px) translateZ(-150px); mask-image:radial-gradient(ellipse at center 15%,black 5%,transparent 65%); animation:gridFloat 30s linear infinite; }
 .vfx-glow { position:absolute; top:-10%; left:50%; width:130vw; height:80vh; transform:translateX(-50%) translateZ(0); background:radial-gradient(ellipse at center top,var(--accent-dim) 0%,transparent 55%); filter:blur(80px); }
 @keyframes gridFloat { 0%{background-position:0 0} 100%{background-position:0 80px} }
-.noise-overlay { position:fixed; inset:0; pointer-events:none; z-index:50; opacity:.035; background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAxONl0rAAAACHRSTlMAMwA0AEEAQAhxG8UAAADLSURBVDjLpZTBEcMgDERRsQfA3sF0/02bAEQYmcn8k1+RsC/J72fN4zP+Z2I51+s0v0N+T+D3hK9z5GfMz8iPCb9TfF0ov8Z+xvg6Rn5M+Blhf4X8jLh3o/wY4/cE+SnhdxL7OeTvTPEzxf4e8veE3xnzc+Z7gnwnvBtzOcd+xvg6Vn5M8G6MzxPkp8TXifxO8XWCfGfMz4m/M8XniO8J8p3wO+F7Qv4Z8zPmd4q/E+TvRPF5Qv5OfJ0oPyf8TpQfE96N8XWC/E7xdaL8Z2K8j4w+yV3xZgAAAABJRU5ErkJggg=='); background-repeat:repeat; mix-blend-mode:screen; }
+.noise-overlay { position:fixed; inset:0; pointer-events:none; z-index:50; opacity:.035; background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAxONl0rAAAACHRSTlMAMwA0AEEAQAhxG8UAAADLSURBVDjLpZTBEcMgDERRsQfA3sF0/02bAEQYmcn8k1+RsC/J72fN4zP+Z2I51+s0v0N+T+D3hK9z5GfMz8iPCb9TfF0ov8Z+xvg6Rn5M+Blhf4X8jLh3o/wY4/cE+SnhdxL7OeTvTPEzxf4e8veE3xnzc+Z7gnwnvBtzOcd+xvg6Vn5M8G6MzxPkp8TXifxO8XWCfGfMz4m/M8XniO8J8p3wO+F7Qv4Z8zPmd4q/E+TvRPF5Qv5OfJ0oPyf8TpQfE96N8XWC/E7xdaL8Z2K8j4w+yV3xZgAAAABJRU5ErkJggg=='); background-repeat:repeat; }
 
 .glass { background: linear-gradient(135deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.02) 100%); backdrop-filter: blur(var(--glass-blur)) saturate(180%); -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
 .glass::before { content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 40%); pointer-events:none; }
