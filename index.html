@@ -27,6 +27,11 @@
     <link rel="preload" as="font" type="font/woff2" href="fonts/SpaceMono-Regular.woff2" crossorigin>
 
     <link rel="stylesheet" href="main.css">
+    
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script defer src="app.js"></script>
 
     <script type="application/ld+json">
     {
@@ -51,8 +56,6 @@
 <body>
 
 <div class="scroll-progress" id="scrollProgress"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <div class="vfx-core">
     <div class="vfx-grid"></div>
@@ -64,28 +67,28 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<nav class="hud-nav glass hover-trigger" aria-label="Primary">
+<nav class="hud-nav glass" aria-label="Primary">
     <div class="hud-left">
         <a href="#hero" aria-label="Ghaidak Alosh Home">
             <img src="logo.svg" alt="Ghaidak Alosh" class="nav-logo" width="130" height="22" onerror="this.outerHTML='<span style=\'font-family:var(--font-h);font-weight:800;font-size:1.4rem;letter-spacing:-.05em;color:var(--ink);\'>GA.</span>'" />
         </a>
     </div>
     <div class="hud-right-group">
-        <a href="#expertise" class="nav-link hide-mobile hover-trigger">Expertise</a>
-        <a href="#portfolio" class="nav-link hide-mobile hover-trigger">Work</a>
-        <a href="#about" class="nav-link hide-mobile hover-trigger">Profile</a>
-        <a href="#testimonials" class="nav-link hide-mobile hover-trigger">Reputation</a>
-        <a href="mailto:studio@ghaidak.com" class="btn-gold hover-trigger"><span>CONTACT</span></a>
+        <a href="#expertise" class="nav-link hide-mobile">Expertise</a>
+        <a href="#portfolio" class="nav-link hide-mobile">Work</a>
+        <a href="#about" class="nav-link hide-mobile">Profile</a>
+        <a href="#testimonials" class="nav-link hide-mobile">Reputation</a>
+        <a href="mailto:studio@ghaidak.com" class="btn-gold"><span>CONTACT</span></a>
     </div>
-    <button class="mobile-menu-btn hover-trigger" id="menuBtn" aria-label="Open menu">MENU</button>
+    <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">MENU</button>
 </nav>
 
 <div class="mobile-overlay" id="mobileOverlay">
-    <a href="#expertise" class="mobile-link hover-trigger">Expertise</a>
-    <a href="#portfolio" class="mobile-link hover-trigger">Work</a>
-    <a href="#about" class="mobile-link hover-trigger">Profile</a>
-    <a href="#testimonials" class="mobile-link hover-trigger">Reputation</a>
-    <a href="mailto:studio@ghaidak.com" class="mobile-link hover-trigger">Contact</a>
+    <a href="#expertise" class="mobile-link">Expertise</a>
+    <a href="#portfolio" class="mobile-link">Work</a>
+    <a href="#about" class="mobile-link">Profile</a>
+    <a href="#testimonials" class="mobile-link">Reputation</a>
+    <a href="mailto:studio@ghaidak.com" class="mobile-link">Contact</a>
 </div>
 
 <main id="main">
@@ -109,8 +112,8 @@
         <div class="hero-bottom reveal-up">
             <p class="hero-desc">I engineer digital trust and authority for scaling companies. High-fidelity execution. Zero agency bloat. One dedicated partner.</p>
             <div class="cta-group">
-                <a href="https://tally.so/r/mRDQkK" target="_blank" rel="noopener" class="btn-gold hover-trigger" aria-label="Apply for Partnership"><span>APPLY FOR PARTNERSHIP</span></a>
-                <a href="#portfolio" class="btn-ghost hover-trigger"><span>VIEW WORK</span></a>
+                <a href="https://tally.so/r/mRDQkK" target="_blank" rel="noopener" class="btn-gold" aria-label="Apply for Partnership"><span>APPLY FOR PARTNERSHIP</span></a>
+                <a href="#portfolio" class="btn-ghost"><span>VIEW WORK</span></a>
             </div>
         </div>
 
@@ -140,21 +143,21 @@
             </div>
             
             <div class="process-list">
-                <div class="process-item reveal-up hover-trigger">
+                <div class="process-item reveal-up">
                     <span class="process-num">01</span>
                     <div>
                         <h3 class="process-title">Diagnose before design.</h3>
                         <p class="process-body">Most brand problems are <strong>positioning problems in disguise</strong>. Before opening Figma, I audit your market and map your audience. I find the visual gap your brand will own.</p>
                     </div>
                 </div>
-                <div class="process-item reveal-up hover-trigger">
+                <div class="process-item reveal-up">
                     <span class="process-num">02</span>
                     <div>
                         <h3 class="process-title">Build the entire system.</h3>
                         <p class="process-body">One point of contact. <strong>Identity, UI/UX, marketing decks, and social systems</strong>. No handoffs. A completely consistent visual language, built by one mind.</p>
                     </div>
                 </div>
-                <div class="process-item reveal-up hover-trigger">
+                <div class="process-item reveal-up">
                     <span class="process-num">03</span>
                     <div>
                         <h3 class="process-title">Hand over and step back.</h3>
@@ -166,22 +169,22 @@
             <div class="value-prop reveal-up">
                 <h2 class="vp-statement">CORE <strong>CAPABILITIES</strong></h2>
                 <div class="capabilities-grid">
-                    <div class="cap-card hover-trigger">
+                    <div class="cap-card">
                         <div class="cap-icon">✦</div>
                         <h4>Brand Identity</h4>
                         <p>Logo architecture, typography, and robust global guidelines.</p>
                     </div>
-                    <div class="cap-card hover-trigger">
+                    <div class="cap-card">
                         <div class="cap-icon">✦</div>
                         <h4>Marketing Assets</h4>
                         <p>High-converting pitch decks and comprehensive brand collateral.</p>
                     </div>
-                    <div class="cap-card hover-trigger">
+                    <div class="cap-card">
                         <div class="cap-icon">✦</div>
                         <h4>UI & Product Design</h4>
                         <p>Web applications and SaaS interfaces. Scalable component libraries.</p>
                     </div>
-                    <div class="cap-card hover-trigger">
+                    <div class="cap-card">
                         <div class="cap-icon">✦</div>
                         <h4>Digital Platforms</h4>
                         <p>Flawless web execution across English and Arabic layouts.</p>
@@ -193,7 +196,7 @@
 
     <section id="portfolio" class="portfolio-showcase">
         <div class="portfolio-backgrounds">
-            <img src="1.webp" class="port-bg is-active" id="bg-1" alt="Wade Fit Studio" width="1920" height="1080" fetchpriority="high" decoding="sync">
+            <img src="1.webp" srcset="1-800w.webp 800w, 1-1200w.webp 1200w, 1-1920w.webp 1920w" sizes="100vw" class="port-bg is-active" id="bg-1" alt="Wade Fit Studio" fetchpriority="high" decoding="sync">
             <img data-src="2.webp" class="port-bg" id="bg-2" alt="Biz Talk Cards" width="1920" height="1080" loading="lazy" decoding="async">
             <img data-src="3.webp" class="port-bg" id="bg-3" alt="Lumi Creative Agency" width="1920" height="1080" loading="lazy" decoding="async">
             <img data-src="4.webp" class="port-bg" id="bg-4" alt="NovaTech Solutions" width="1920" height="1080" loading="lazy" decoding="async">
@@ -206,7 +209,7 @@
                 <h2><span>PORTFOLIO (05)</span><span>SELECTED CASE STUDIES</span></h2>
             </div>
 
-            <a href="https://www.behance.net/gallery/144161981/Wade-Fit-Studio-Logo" target="_blank" rel="noopener noreferrer" class="port-item is-active hover-trigger" data-target="bg-1" aria-label="View Wade Fit Studio Project">
+            <a href="https://www.behance.net/gallery/144161981/Wade-Fit-Studio-Logo" target="_blank" rel="noopener noreferrer" class="port-item is-active" data-target="bg-1" aria-label="View Wade Fit Studio Project">
                 <div class="port-depth-num">01</div>
                 <div class="port-text-wrap">
                     <span class="port-meta">01 / FITNESS</span>
@@ -215,7 +218,7 @@
                 </div>
             </a>
 
-            <a href="https://www.behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-2" aria-label="View Biz Talk Cards Project">
+            <a href="https://www.behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="port-item" data-target="bg-2" aria-label="View Biz Talk Cards Project">
                 <div class="port-depth-num">02</div>
                 <div class="port-text-wrap">
                     <span class="port-meta">02 / B2B ENTERPRISE</span>
@@ -224,7 +227,7 @@
                 </div>
             </a>
 
-            <a href="https://www.behance.net/gallery/162997763/LUMI-Creative-Agency-Logo" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-3" aria-label="View Lumi Creative Agency Project">
+            <a href="https://www.behance.net/gallery/162997763/LUMI-Creative-Agency-Logo" target="_blank" rel="noopener noreferrer" class="port-item" data-target="bg-3" aria-label="View Lumi Creative Agency Project">
                 <div class="port-depth-num">03</div>
                 <div class="port-text-wrap">
                     <span class="port-meta">03 / AGENCY</span>
@@ -233,7 +236,7 @@
                 </div>
             </a>
 
-            <a href="https://www.behance.net/gallery/234138399/NovaTech-Solutions" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-4" aria-label="View NovaTech Solutions Project">
+            <a href="https://www.behance.net/gallery/234138399/NovaTech-Solutions" target="_blank" rel="noopener noreferrer" class="port-item" data-target="bg-4" aria-label="View NovaTech Solutions Project">
                 <div class="port-depth-num">04</div>
                 <div class="port-text-wrap">
                     <span class="port-meta">04 / FINTECH</span>
@@ -242,7 +245,7 @@
                 </div>
             </a>
 
-            <a href="https://www.behance.net/gallery/188005453/Al-Nargis-Beauty-Brand-Identity" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-5" aria-label="View Al Nargis Beauty Project">
+            <a href="https://www.behance.net/gallery/188005453/Al-Nargis-Beauty-Brand-Identity" target="_blank" rel="noopener noreferrer" class="port-item" data-target="bg-5" aria-label="View Al Nargis Beauty Project">
                 <div class="port-depth-num">05</div>
                 <div class="port-text-wrap">
                     <span class="port-meta">05 / RETAIL</span>
@@ -259,7 +262,7 @@
                 <h2 class="jumbo-heading">THE<br>PARTNER</h2>
             </div>
             <div class="profile-grid">
-                <div class="img-container reveal-up hover-trigger">
+                <div class="img-container reveal-up">
                     <div class="img-inner">
                         <img src="me.webp" alt="Ghaidak Alosh | Senior Graphic Designer" width="440" height="550" loading="lazy">
                     </div>
@@ -270,24 +273,24 @@
                     <p class="bio-text">I operate globally, serving enterprises across North America, Europe, and the Middle East. I own the visual problem. I return the solution.</p>
                     
                     <div class="stats-row">
-                        <div class="stat hover-trigger">
+                        <div class="stat">
                             <span class="label">Availability</span>
                             <span class="val">Limited Retainers Open</span>
                         </div>
-                        <div class="stat hover-trigger">
+                        <div class="stat">
                             <span class="label">Location</span>
                             <span class="val">Global Remote</span>
                         </div>
-                        <div class="stat hover-trigger">
+                        <div class="stat">
                             <span class="label">Languages</span>
                             <span class="val">English / Arabic</span>
                         </div>
                     </div>
 
                     <div class="social-row">
-                        <a href="https://linkedin.com/in/ghaidak-alosh" target="_blank" rel="noopener noreferrer" class="social-link hover-trigger">LinkedIn</a>
-                        <a href="https://behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="social-link hover-trigger">Behance</a>
-                        <a href="mailto:studio@ghaidak.com" class="social-link hover-trigger">Email</a>
+                        <a href="https://linkedin.com/in/ghaidak-alosh" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                        <a href="https://behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="social-link">Behance</a>
+                        <a href="mailto:studio@ghaidak.com" class="social-link">Email</a>
                     </div>
                 </div>
             </div>
@@ -299,7 +302,7 @@
             <h2><span>REPUTATION (03)</span><span>CLIENT VOICES</span></h2>
         </div>
         <div class="reviews-grid">
-            <div class="review-card hover-trigger reveal-up">
+            <div class="review-card reveal-up">
                 <div class="stars">★★★★★</div>
                 <p class="review-text">"It is rare to find premium quality combined with speed. Deadlines are respected. Delivery is production-ready."</p>
                 <div class="review-author">
@@ -307,7 +310,7 @@
                     <span>Founder, B2B Enterprise SaaS | UAE</span>
                 </div>
             </div>
-            <div class="review-card hover-trigger reveal-up" style="transition-delay:.1s">
+            <div class="review-card reveal-up" style="transition-delay:.1s">
                 <div class="stars">★★★★★</div>
                 <p class="review-text">"He listens deeply, challenges ideas honestly, and delivers at a very high level."</p>
                 <div class="review-author">
@@ -315,7 +318,7 @@
                     <span>CEO, NovaKepler LLC | USA</span>
                 </div>
             </div>
-            <div class="review-card hover-trigger reveal-up" style="transition-delay:.2s">
+            <div class="review-card reveal-up" style="transition-delay:.2s">
                 <div class="stars">★★★★★</div>
                 <p class="review-text">"His work feels alive. Strategic, sharp, and executed with precision."</p>
                 <div class="review-author">
@@ -333,8 +336,8 @@
             <h2 class="cta-headline">Let's build<br>something<br><span class="cta-accent">valuable.</span></h2>
             <p class="cta-sub">One partnership. Full ownership. From strategy to final delivery, without the agency overhead.</p>
             <div class="cta-actions">
-                <a href="mailto:studio@ghaidak.com" class="btn-gold hover-trigger" style="height:52px;font-size:.8rem;padding:0 2.5rem"><span>INITIATE PROJECT</span></a>
-                <a href="https://tally.so/r/mRDQkK" target="_blank" rel="noopener" class="btn-ghost hover-trigger" style="height:52px;font-size:.8rem;padding:0 2rem"><span>APPLY FOR PARTNERSHIP</span></a>
+                <a href="mailto:studio@ghaidak.com" class="btn-gold" style="height:52px;font-size:.8rem;padding:0 2.5rem"><span>INITIATE PROJECT</span></a>
+                <a href="https://tally.so/r/mRDQkK" target="_blank" rel="noopener" class="btn-ghost" style="height:52px;font-size:.8rem;padding:0 2rem"><span>APPLY FOR PARTNERSHIP</span></a>
             </div>
         </div>
     </section>
@@ -344,11 +347,6 @@
     <span>© 2026 Ghaidak Alosh. All rights reserved.</span>
     <span>Brand Identity & Visual Strategy · Worldwide</span>
 </footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-<script src="app.js"></script>
 
 </body>
 </html>
