@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const ring = document.getElementById('cursorRing');
 
     if (!isMobile && !noMo && window.gsap && dot && ring) {
+        document.body.style.cursor = 'none';
+        
         gsap.set([dot, ring], { xPercent: -50, yPercent: -50 });
         const xDot  = gsap.quickTo(dot,  'x', { duration: .08, ease: 'none' });
         const yDot  = gsap.quickTo(dot,  'y', { duration: .08, ease: 'none' });
@@ -54,9 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
             xDot(e.clientX);  yDot(e.clientY);
             xRing(e.clientX); yRing(e.clientY);
         });
+        
         document.querySelectorAll('.hover-trigger, a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovering');
+                el.style.cursor = 'none'; 
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering');
+                el.style.cursor = '';
+            });
         });
     }
 
@@ -121,8 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ── Portfolio background switcher
-    // Uses scroll position (not IntersectionObserver) so it works reliably
-    // with sticky/overflow:hidden containers and margin-top:-100vh layouts.
     const portItems = document.querySelectorAll('.port-item');
     const portBgs   = document.querySelectorAll('.port-bg');
 
@@ -136,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
             portBgs.forEach((bg, i)     => bg.classList.toggle('is-active',   i === idx));
         };
 
-        // Activate item whose center is closest to the viewport mid-point
         const updatePortfolio = () => {
             const mid = window.innerHeight / 2;
             let bestIdx  = 0;
@@ -150,14 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
             activateIndex(bestIdx);
         };
 
-        // Run immediately so bg-1 is active on page load
         activateIndex(0);
 
         window.addEventListener('scroll', updatePortfolio, { passive: true });
         window.addEventListener('resize', updatePortfolio, { passive: true });
     }
 
-    // ── GSAP animations (skip if GSAP failed to load)
+    // ── GSAP animations
     if (!window.gsap || !window.ScrollTrigger) {
         clearTimeout(revealFallback);
         document.querySelectorAll('.reveal-up').forEach(el => {
@@ -167,8 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (!noMo) {
-        // Portfolio: text parallax only — no inline filter/opacity changes
-        // (opacity/filter are handled purely by CSS .is-active toggling)
         portItems.forEach(item => {
             const wrap = item.querySelector('.port-text-wrap');
             if (!wrap) return;
@@ -181,17 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 z: -20, rotateX: -3, ease: 'none',
                 scrollTrigger: { trigger: item, start: 'center center', end: 'bottom top', scrub: 1.2 }
             });
-            // Background parallax — GSAP owns the full transform (yPercent + scale).
-            // CSS transform on .port-bg/.port-bg.is-active has been removed so that this
-            // inline GSAP transform does NOT silently override the CSS class scale effect.
-            // Scale now transitions via GSAP's opacity/filter CSS properties (opacity + filter
-            // remain CSS-class-driven); the zoom-in effect is achieved by starting at scale(1.08)
-            // on page load via gsap.set, then letting .is-active CSS opacity/filter reveal it.
             const bg = document.getElementById(item.dataset.target);
             if (bg) {
-                // Set the initial zoomed-out scale once (mirrors the old CSS default)
                 gsap.set(bg, { scale: 1.08 });
-                // Parallax scrub: yPercent only, scale stays constant at 1.08 via the set above
                 gsap.fromTo(bg,
                     { yPercent: -6 },
                     { yPercent: 6, ease: 'none',
@@ -200,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Scroll-reveal
         gsap.utils.toArray('.reveal-up').forEach(el => {
             gsap.fromTo(el,
                 { y: 44, opacity: 0 },
