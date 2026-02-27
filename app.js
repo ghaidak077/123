@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.opacity = '1';
             el.style.transform = 'none';
         });
-    }, 2500);
+    }, 500);
 
     if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
@@ -184,15 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.style.opacity       = '0.55';
         btn.style.pointerEvents = 'none';
 
-        /*
-         * ─── IMPORTANT ──────────────────────────────────────────────
-         * Replace the URL below with your real Basin endpoint.
-         * 1. Go to https://usebasin.com and create a free account.
-         * 2. Create a new form — Basin gives you a URL like:
-         *    https://usebasin.com/f/abc123def456
-         * 3. Paste that URL here and you're done.
-         * ────────────────────────────────────────────────────────────
-         */
         const endpoint = 'https://usebasin.com/f/16d3bed22a44';
 
         const formData = new FormData(this);
