@@ -1,0 +1,23 @@
+{
+  "name": "Ghaidak Alosh",
+  "short_name": "Ghaidak",
+  "description": "Brand identity for Gulf founders who build to lead.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#040404",
+  "background_color": "#040404",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

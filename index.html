@@ -6,27 +6,48 @@
     <title>Ghaidak Alosh | Brand Identity for Gulf Founders</title>
     <meta name="description" content="I build brand identities for ambitious Gulf founders who are serious about where they're going — and serious about how they're seen getting there.">
 
+    <!-- ── Canonical & Open Graph ─────────────────────────────── -->
     <link rel="canonical" href="https://ghaidak.com/">
     <meta property="og:title" content="Ghaidak Alosh | Brand Identity for Gulf Founders">
     <meta property="og:description" content="Built for founders who take their name seriously. Brand identity and visual strategy across KSA, UAE, and beyond.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ghaidak.com/">
     <meta property="og:image" content="https://ghaidak.com/og-image.webp">
-    
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Ghaidak Alosh">
+    <meta property="og:locale" content="en_US">
+
+    <!-- ── Twitter Card ───────────────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ghaidak Alosh | Brand Identity for Gulf Founders">
+    <meta name="twitter:description" content="Built for founders who take their name seriously. Brand identity and visual strategy across KSA, UAE, and beyond.">
+    <meta name="twitter:image" content="https://ghaidak.com/og-image.webp">
+
+    <!-- ── PWA & Theme ────────────────────────────────────────── -->
     <meta name="theme-color" content="#040404">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Ghaidak">
+    <meta name="application-name" content="Ghaidak">
 
-    <link rel="icon" type="image/svg+xml" href="tab_logo.svg">
-    <link rel="apple-touch-icon" href="tab_logo.svg">
-    
+    <!-- ── Favicons (production-correct set) ─────────────────── -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- ── Preconnect ─────────────────────────────────────────── -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    
+
+    <!-- ── Preload critical assets ───────────────────────────── -->
     <link rel="preload" as="image" href="1.avif" type="image/avif">
     <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-ExtraBold.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/SpaceMono-Regular.woff2" crossorigin>
 
+    <!-- ── Stylesheet ────────────────────────────────────────── -->
     <link rel="stylesheet" href="main.css">
     <script>document.documentElement.classList.remove('no-js');</script>
 </head>
@@ -36,13 +57,13 @@
 <div class="cursor-dot"  id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<div class="vfx-core">
+<div class="vfx-core" aria-hidden="true">
     <div class="vfx-grid"></div>
     <div class="vfx-glow"></div>
 </div>
 
 <button id="scrollTop" class="scroll-top-btn" aria-label="Scroll to top">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
 <!-- ── NAV ────────────────────────────────────────────────────── -->
@@ -60,11 +81,11 @@
         <a href="#about"        class="nav-link hide-mobile hover-trigger">Profile</a>
         <button class="btn-gold open-brief hover-trigger"><span>START PROJECT</span></button>
     </div>
-    <button class="mobile-menu-btn hover-trigger" id="menuBtn" aria-label="Open menu">MENU</button>
+    <button class="mobile-menu-btn hover-trigger" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileOverlay">MENU</button>
 </nav>
 
 <!-- ── MOBILE OVERLAY ─────────────────────────────────────────── -->
-<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-label="Navigation menu">
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <a href="#portfolio"    class="mobile-link hover-trigger">Work</a>
     <a href="#testimonials" class="mobile-link hover-trigger">Reputation</a>
     <a href="#expertise"    class="mobile-link hover-trigger">Expertise</a>
@@ -84,7 +105,7 @@
                     <span class="accent-text">A BRAND THAT MATCHES IT.</span>
                 </h1>
             </div>
-            <div class="hero-spec-panel">
+            <div class="hero-spec-panel" aria-label="Quick stats">
                 <div class="spec-row">
                     <span class="spec-label">Experience</span>
                     <span class="spec-val gold">6+ Years</span>
@@ -123,17 +144,17 @@
         <div class="partner-label"><span>Trusted by Founders Across the Gulf and Beyond</span></div>
         <div class="marquee-track logos-track" aria-hidden="true">
             <div class="marquee-content logos-content">
-                <img src="logo/1.svg" alt="" loading="lazy">
-                <img src="logo/2.svg" alt="" loading="lazy">
-                <img src="logo/3.svg" alt="" loading="lazy">
-                <img src="logo/4.svg" alt="" loading="lazy">
-                <img src="logo/5.svg" alt="" loading="lazy">
+                <img src="logo/1.svg" alt="" loading="lazy" width="120" height="40">
+                <img src="logo/2.svg" alt="" loading="lazy" width="120" height="40">
+                <img src="logo/3.svg" alt="" loading="lazy" width="120" height="40">
+                <img src="logo/4.svg" alt="" loading="lazy" width="120" height="40">
+                <img src="logo/5.svg" alt="" loading="lazy" width="120" height="40">
                 <!-- duplicated for seamless loop -->
-                <img src="logo/1.svg" alt="" loading="lazy">
-                <img src="logo/2.svg" alt="" loading="lazy">
-                <img src="logo/3.svg" alt="" loading="lazy">
-                <img src="logo/4.svg" alt="" loading="lazy">
-                <img src="logo/5.svg" alt="" loading="lazy">
+                <img src="logo/1.svg" alt="" loading="lazy" width="120" height="40">
+                <img src="logo/2.svg" alt="" loading="lazy" width="120" height="40">
+                <img src="logo/3.svg" alt="" loading="lazy" width="120" height="40">
+                <img src="logo/4.svg" alt="" loading="lazy" width="120" height="40">
+                <img src="logo/5.svg" alt="" loading="lazy" width="120" height="40">
             </div>
         </div>
     </section>
@@ -160,7 +181,7 @@
                 <div class="port-text-wrap">
                     <span class="port-meta">01 / FITNESS</span>
                     <h3 class="port-title">WADE FIT STUDIO</h3>
-                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
 
@@ -170,7 +191,7 @@
                 <div class="port-text-wrap">
                     <span class="port-meta">02 / B2B ENTERPRISE</span>
                     <h3 class="port-title">BIZ TALK CARDS</h3>
-                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
 
@@ -180,7 +201,7 @@
                 <div class="port-text-wrap">
                     <span class="port-meta">03 / AGENCY</span>
                     <h3 class="port-title">LUMI CREATIVE</h3>
-                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
 
@@ -190,7 +211,7 @@
                 <div class="port-text-wrap">
                     <span class="port-meta">04 / FINTECH</span>
                     <h3 class="port-title">NOVATECH</h3>
-                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
 
@@ -200,7 +221,7 @@
                 <div class="port-text-wrap">
                     <span class="port-meta">05 / RETAIL</span>
                     <h3 class="port-title">AL NARGIS</h3>
-                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
         </div>
@@ -214,7 +235,7 @@
         <div class="editorial-reviews-grid">
 
             <article class="editorial-review reveal-up hover-trigger">
-                <div class="er-index">01</div>
+                <div class="er-index" aria-hidden="true">01</div>
                 <blockquote class="er-body">
                     <p class="er-quote">"It is rare to find premium quality combined with speed. Deadlines are respected. Delivery is production-ready. A vital asset to our scaling process."</p>
                     <footer class="er-footer">
@@ -228,7 +249,7 @@
             </article>
 
             <article class="editorial-review reveal-up hover-trigger" style="transition-delay:.1s">
-                <div class="er-index">02</div>
+                <div class="er-index" aria-hidden="true">02</div>
                 <blockquote class="er-body">
                     <p class="er-quote">"He listens deeply, challenges ideas honestly, and delivers at a very high level. The strategic depth he brings entirely redefined our market positioning."</p>
                     <footer class="er-footer">
@@ -242,7 +263,7 @@
             </article>
 
             <article class="editorial-review reveal-up hover-trigger" style="transition-delay:.2s">
-                <div class="er-index">03</div>
+                <div class="er-index" aria-hidden="true">03</div>
                 <blockquote class="er-body">
                     <p class="er-quote">"His work feels alive. Strategic, sharp, and executed with absolute precision. He takes full ownership of the visual problem and returns a flawless solution."</p>
                     <footer class="er-footer">
@@ -267,21 +288,21 @@
 
             <div class="process-list">
                 <div class="process-item reveal-up hover-trigger">
-                    <span class="process-num">01</span>
+                    <span class="process-num" aria-hidden="true">01</span>
                     <div>
                         <h3 class="process-title">Diagnose before design.</h3>
                         <p class="process-body">Most brand problems are <strong>positioning problems in disguise</strong>. Before a single mark is drawn, I study your market, your competitors, and your audience. I find the space your brand will own — and own it completely.</p>
                     </div>
                 </div>
                 <div class="process-item reveal-up hover-trigger">
-                    <span class="process-num">02</span>
+                    <span class="process-num" aria-hidden="true">02</span>
                     <div>
                         <h3 class="process-title">Build the entire system.</h3>
                         <p class="process-body">One point of contact. <strong>Identity, investor materials, and global visual systems</strong>. No handoffs, no juniors, no excuses. A completely consistent visual language — built by one senior mind, start to finish.</p>
                     </div>
                 </div>
                 <div class="process-item reveal-up hover-trigger">
-                    <span class="process-num">03</span>
+                    <span class="process-num" aria-hidden="true">03</span>
                     <div>
                         <h3 class="process-title">Hand over and step back.</h3>
                         <p class="process-body">Everything is <strong>documented, named, and structured for your team</strong>. You take full ownership from day one. Built to last — not to keep you dependent.</p>
@@ -293,22 +314,22 @@
                 <h2 class="vp-statement">CORE <strong>CAPABILITIES</strong></h2>
                 <div class="capabilities-grid">
                     <div class="cap-card hover-trigger">
-                        <div class="cap-icon">✦</div>
+                        <div class="cap-icon" aria-hidden="true">✦</div>
                         <h4>Strategic Branding</h4>
                         <p>Identities that command respect in every boardroom, every market, and every conversation — built to last for decades.</p>
                     </div>
                     <div class="cap-card hover-trigger">
-                        <div class="cap-icon">✦</div>
+                        <div class="cap-icon" aria-hidden="true">✦</div>
                         <h4>Market Presence</h4>
                         <p>High-fidelity marketing visuals and social systems that make your competitors take notice and your clients feel confident.</p>
                     </div>
                     <div class="cap-card hover-trigger">
-                        <div class="cap-icon">✦</div>
+                        <div class="cap-icon" aria-hidden="true">✦</div>
                         <h4>Board-Ready Assets</h4>
                         <p>Investor pitch decks and premium corporate materials engineered to carry weight before you walk in the room.</p>
                     </div>
                     <div class="cap-card hover-trigger">
-                        <div class="cap-icon">✦</div>
+                        <div class="cap-icon" aria-hidden="true">✦</div>
                         <h4>Visual Strategy</h4>
                         <p>Expert creative direction that aligns your visual presence with your true market position — and where you're going next.</p>
                     </div>
@@ -362,7 +383,7 @@
     <!-- ── CTA ────────────────────────────────────────────────── -->
     <section id="contact" class="cta-section" aria-label="Contact and start a project">
         <div class="cta-inner reveal-up">
-            <div class="avail-badge"><span class="avail-dot"></span> Accepting select projects — Q2 2026</div>
+            <div class="avail-badge"><span class="avail-dot" aria-hidden="true"></span> Accepting select projects — Q2 2026</div>
             <div class="cta-eyebrow">Ready when you are.</div>
             <h2 class="cta-headline">Your brand is<br>your reputation.<br><span class="cta-accent">Don't settle.</span></h2>
             <p class="cta-sub">One senior partner. No juniors, no handoffs, no excuses. From the first conversation to final delivery — I own it.</p>
@@ -382,10 +403,10 @@
 </footer>
 
 <!-- ── BRIEF MODAL ────────────────────────────────────────────── -->
-<div class="brief-modal" id="briefModal" role="dialog" aria-modal="true" aria-labelledby="briefModalTitle">
+<div class="brief-modal" id="briefModal" role="dialog" aria-modal="true" aria-labelledby="briefModalTitle" aria-hidden="true">
     <div class="brief-glass" data-lenis-prevent>
         <button class="close-brief hover-trigger" id="closeBrief" aria-label="Close modal">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
         <form class="brief-form" id="briefForm" novalidate>
             <div class="form-header">
@@ -417,7 +438,7 @@
                 <div class="input-group full-width">
                     <label for="brief-budget">Project Budget *</label>
                     <input type="text" id="brief-budget" name="budget" required placeholder="Enter your budget — or choose a range below" class="brief-input" autocomplete="off">
-                    <select id="brief-budget-range" name="budget_range" class="brief-select budget-range-select">
+                    <select id="brief-budget-range" name="budget_range" class="brief-select budget-range-select" aria-label="Budget range quick select">
                         <option value="" disabled selected>Quick select a range...</option>
                         <option value="starter">$500 – $1,500 &nbsp;·&nbsp; Starter Package</option>
                         <option value="growth">$1,500 – $3,500 &nbsp;·&nbsp; Growth Package</option>
@@ -444,6 +465,7 @@
     </div>
 </div>
 
+<!-- ── SCRIPTS ────────────────────────────────────────────────── -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
