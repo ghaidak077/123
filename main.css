@@ -302,7 +302,7 @@ textarea.brief-input { min-height:100px; resize:vertical; }
     :root { --nav-h: 60px; --pad-x: 1.75rem; --section: 4.5rem; }
     html, body { overflow-x:clip; }
     .hide-mobile     { display:none !important; }
-    .hud-nav         { top:0; width:100%; border-radius:0; padding:0 var(--pad-x); background:rgba(8,8,10,0.97); border-bottom:1px solid var(--glass-border); }
+    .hud-nav         { top:0; left:0; right:0; width:100%; transform:none; border-radius:0; padding:0 var(--pad-x); background:rgba(8,8,10,0.97); border-bottom:1px solid var(--glass-border); }
     .mobile-menu-btn { display:inline-flex; }
     .hero-section    { padding-top:calc(var(--nav-h) + 3rem); padding-bottom:4rem; }
     .mega-type       { font-size:clamp(2.2rem,9vw,3.5rem); line-height:1.02; }
