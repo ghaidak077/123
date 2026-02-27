@@ -79,8 +79,7 @@
 <nav class="hud-nav glass hover-trigger" aria-label="Primary navigation">
     <div class="hud-left">
         <a href="#hero" aria-label="Ghaidak Alosh | Home">
-            <img src="logo.svg" alt="Ghaidak Alosh" class="nav-logo" width="130" height="22"
-                 onerror="this.outerHTML='<span style=\\'font-family:var(--font-h);font-weight:800;font-size:1.3rem;letter-spacing:-.05em;color:var(--ink);\\'>GA.</span>'" />
+            <img src="logo.svg" alt="GA." class="nav-logo" width="130" height="22" />
         </a>
     </div>
     <div class="hud-right-group">
@@ -98,7 +97,7 @@
     <a href="#testimonials" class="mobile-link hover-trigger">Reputation</a>
     <a href="#expertise"    class="mobile-link hover-trigger">Expertise</a>
     <a href="#about"        class="mobile-link hover-trigger">Profile</a>
-    <button class="mobile-link open-brief hover-trigger" style="color:var(--accent);background:none;">Start Project</button>
+    <button class="mobile-link open-brief hover-trigger mobile-link-accent">Start Project</button>
 </div>
 
 <main id="main">
@@ -175,7 +174,7 @@
         </div>
 
         <div class="portfolio-content">
-            <div class="section-header reveal-up" style="position:relative;z-index:10;margin-bottom:0;padding-left:var(--pad-x);padding-right:var(--pad-x);">
+            <div class="section-header reveal-up port-header-override">
                 <h2><span>PORTFOLIO (05)</span><span>SELECTED CASE STUDIES</span></h2>
             </div>
 
@@ -251,7 +250,7 @@
                 </blockquote>
             </article>
 
-            <article class="editorial-review reveal-up hover-trigger" style="transition-delay:.1s">
+            <article class="editorial-review reveal-up hover-trigger delay-1">
                 <div class="er-index" aria-hidden="true">02</div>
                 <blockquote class="er-body">
                     <p class="er-quote">"He listens deeply, challenges ideas honestly, and delivers at a very high level. The strategic depth he brings entirely redefined our market positioning."</p>
@@ -265,7 +264,7 @@
                 </blockquote>
             </article>
 
-            <article class="editorial-review reveal-up hover-trigger" style="transition-delay:.2s">
+            <article class="editorial-review reveal-up hover-trigger delay-2">
                 <div class="er-index" aria-hidden="true">03</div>
                 <blockquote class="er-body">
                     <p class="er-quote">"His work feels alive. Strategic, sharp, and executed with absolute precision. He takes full ownership of the visual problem and returns a flawless solution."</p>
@@ -438,9 +437,9 @@
                     <input type="text" id="brief-budget" name="budget" required placeholder="Enter your budget or choose a range below" class="brief-input" autocomplete="off">
                     <select id="brief-budget-range" name="budget_range" class="brief-select budget-range-select" aria-label="Budget range quick select">
                         <option value="" disabled selected>Quick select a range...</option>
-                        <option value="starter">$500 – $1,500 &nbsp;·&nbsp; Starter Package</option>
-                        <option value="growth">$1,500 – $3,500 &nbsp;·&nbsp; Growth Package</option>
-                        <option value="premium">$3,500 – $7,000 &nbsp;·&nbsp; Premium Identity</option>
+                        <option value="starter">$500 - $1,500 &nbsp;·&nbsp; Starter Package</option>
+                        <option value="growth">$1,500 - $3,500 &nbsp;·&nbsp; Growth Package</option>
+                        <option value="premium">$3,500 - $7,000 &nbsp;·&nbsp; Premium Identity</option>
                         <option value="enterprise">$7,000+ &nbsp;·&nbsp; Full Brand &amp; Strategy</option>
                     </select>
                 </div>

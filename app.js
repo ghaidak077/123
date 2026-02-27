@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ── ENVIRONMENT DETECTION ────────────────────────────────── */
     const mq     = window.matchMedia('(max-width:1024px)');
     const noMo   = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     let isMobile = mq.matches;
     mq.addEventListener('change', e => { isMobile = e.matches; });
 
-    /* Fallback: reveal elements if GSAP never fires */
     const revealFallback = setTimeout(() => {
         document.querySelectorAll('.reveal-up').forEach(el => {
             el.style.opacity = '1';
@@ -16,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
-    /* ── SCROLL PROGRESS + NAV SCROLL STATE ──────────────────── */
     const progressBar  = document.getElementById('scrollProgress');
     const navEl        = document.querySelector('.hud-nav');
     const scrollTopBtn = document.getElementById('scrollTop');
@@ -41,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    /* ── CUSTOM CURSOR ────────────────────────────────────────── */
     const dot  = document.getElementById('cursorDot');
     const ring = document.getElementById('cursorRing');
 
@@ -70,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ── SMOOTH SCROLL (LENIS) ────────────────────────────────── */
     const menuBtn = document.getElementById('menuBtn');
     const overlay = document.getElementById('mobileOverlay');
     let lenisRef  = null;
@@ -82,8 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 smoothTouch: false,
             });
-            const raf = t => { lenisRef.raf(t); requestAnimationFrame(raf); };
-            requestAnimationFrame(raf);
+            
+            lenisRef.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => { lenisRef.raf(time * 1000); });
+            gsap.ticker.lagSmoothing(0, 0);
 
             scrollTopBtn?.addEventListener('click', () => lenisRef.scrollTo(0, { duration:1.4 }));
 
@@ -118,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ── MOBILE MENU ──────────────────────────────────────────── */
     menuBtn?.addEventListener('click', () => {
         const open = overlay.classList.toggle('active');
         menuBtn.textContent = open ? 'CLOSE' : 'MENU';
@@ -126,11 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
         else          { document.body.style.overflow = open ? 'hidden' : ''; }
     });
 
-    /* ── BRIEF MODAL ──────────────────────────────────────────── */
     const briefModal = document.getElementById('briefModal');
     const closeBrief = document.getElementById('closeBrief');
     const briefForm  = document.getElementById('briefForm');
     let formDirty    = false;
+    let isSubmitting = false;
 
     briefForm?.querySelectorAll('input, textarea, select').forEach(input => {
         input.addEventListener('input', () => { formDirty = true; });
@@ -160,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.open-brief').forEach(btn => btn.addEventListener('click', openModal));
     closeBrief?.addEventListener('click', closeModal);
 
-    /* bounce-shake when clicking outside the glass */
     briefModal?.addEventListener('click', e => {
         if (e.target !== briefModal) return;
         const glass = document.querySelector('.brief-glass');
@@ -169,23 +164,23 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => { glass.style.transform = 'translateY(0) scale(1)'; }, 150);
     });
 
-    /* close on Escape */
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && briefModal?.classList.contains('active')) closeModal(null);
     });
 
-    /* ── BRIEF FORM SUBMIT ────────────────────────────────────── */
     briefForm?.addEventListener('submit', async function(e) {
         e.preventDefault();
+        if (isSubmitting) return;
+        isSubmitting = true;
+        
         const btn          = this.querySelector('button[type="submit"]');
         const originalHTML = btn.innerHTML;
 
-        btn.innerHTML           = '<span>SENDING…</span>';
+        btn.innerHTML           = '<span>SENDING...</span>';
         btn.style.opacity       = '0.55';
         btn.style.pointerEvents = 'none';
 
         const endpoint = 'https://usebasin.com/f/16d3bed22a44';
-
         const formData = new FormData(this);
 
         try {
@@ -196,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                btn.innerHTML        = '<span>BRIEF SECURED ✓</span>';
+                btn.innerHTML        = '<span>BRIEF SECURED</span>';
                 btn.style.background = '#4CAF50';
                 btn.style.color      = '#fff';
                 formDirty = false;
@@ -207,9 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.style.pointerEvents = 'auto';
                     btn.style.background    = 'var(--accent)';
                     btn.style.color         = '#000';
+                    isSubmitting            = false;
                 }, 1600);
             } else {
-                btn.innerHTML        = '<span>SUBMISSION FAILED — RETRY</span>';
+                btn.innerHTML        = '<span>SUBMISSION FAILED - RETRY</span>';
                 btn.style.background = '#b00020';
                 btn.style.color      = '#fff';
                 setTimeout(() => {
@@ -218,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.style.pointerEvents = 'auto';
                     btn.style.background    = 'var(--accent)';
                     btn.style.color         = '#000';
+                    isSubmitting            = false;
                 }, 2500);
             }
         } catch (error) {
@@ -230,17 +227,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.style.pointerEvents = 'auto';
                 btn.style.background    = 'var(--accent)';
                 btn.style.color         = '#000';
+                isSubmitting            = false;
             }, 2500);
         }
     });
 
-    /* ── BUDGET RANGE → TEXT INPUT SYNC ──────────────────────── */
     const budgetInput = document.getElementById('brief-budget');
     const budgetRange = document.getElementById('brief-budget-range');
     const budgetLabels = {
-        starter:    '$500 – $1,500 (Starter Package)',
-        growth:     '$1,500 – $3,500 (Growth Package)',
-        premium:    '$3,500 – $7,000 (Premium Identity)',
+        starter:    '$500 - $1,500 (Starter Package)',
+        growth:     '$1,500 - $3,500 (Growth Package)',
+        premium:    '$3,500 - $7,000 (Premium Identity)',
         enterprise: '$7,000+ (Full Brand & Strategy)',
     };
     budgetRange?.addEventListener('change', () => {
@@ -248,42 +245,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (label && budgetInput) {
             budgetInput.value = label;
             budgetInput.dispatchEvent(new Event('input'));
-            /* reset select visual back to placeholder state */
             setTimeout(() => { budgetRange.selectedIndex = 0; }, 120);
         }
     });
 
-    /* ── PORTFOLIO SCROLL ACTIVATION ─────────────────────────── */
     const portItems = document.querySelectorAll('.port-item');
     const portBgs   = document.querySelectorAll('.port-bg');
 
     if (portItems.length > 0) {
-        let activeIndex = -1;
-
         const activateIndex = (idx) => {
-            if (idx === activeIndex) return;
-            activeIndex = idx;
             portItems.forEach((item, i) => item.classList.toggle('is-active', i === idx));
-            portBgs.forEach((bg,   i) => bg.classList.toggle('is-active', i === idx));
+            portBgs.forEach((bg, i) => bg.classList.toggle('is-active', i === idx));
         };
 
-        const updatePortfolio = () => {
-            const mid = window.innerHeight / 2;
-            let bestIdx = 0, bestDist = Infinity;
-            portItems.forEach((item, i) => {
-                const rect = item.getBoundingClientRect();
-                const dist = Math.abs((rect.top + rect.height / 2) - mid);
-                if (dist < bestDist) { bestDist = dist; bestIdx = i; }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = Array.from(portItems).indexOf(entry.target);
+                    activateIndex(idx);
+                }
             });
-            activateIndex(bestIdx);
-        };
+        }, { threshold: 0.5 });
 
-        activateIndex(0);
-        window.addEventListener('scroll', updatePortfolio, { passive:true });
-        window.addEventListener('resize', updatePortfolio, { passive:true });
+        portItems.forEach(item => observer.observe(item));
     }
 
-    /* ── EARLY EXIT IF NO GSAP ────────────────────────────────── */
     if (!window.gsap || !window.ScrollTrigger) {
         clearTimeout(revealFallback);
         document.querySelectorAll('.reveal-up').forEach(el => {
@@ -293,9 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    /* ── GSAP ANIMATIONS ──────────────────────────────────────── */
     if (!noMo) {
-        /* Portfolio parallax */
         portItems.forEach(item => {
             const wrap = item.querySelector('.port-text-wrap');
             if (!wrap) return;
@@ -317,7 +301,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        /* Scroll-triggered reveal */
         gsap.utils.toArray('.reveal-up').forEach(el => {
             gsap.fromTo(el,
                 { y:44, opacity:0 },
@@ -333,7 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ScrollTrigger.refresh();
     } else {
-        /* Reduced motion: reveal immediately */
         clearTimeout(revealFallback);
         document.querySelectorAll('.reveal-up').forEach(el => {
             el.style.opacity   = '1';
