@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
 
     const mq     = window.matchMedia('(max-width:1024px)');
     const noMo   = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -118,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menuBtn?.addEventListener('click', () => {
         const open = overlay.classList.toggle('active');
         menuBtn.textContent = open ? 'CLOSE' : 'MENU';
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
         if (lenisRef) { open ? lenisRef.stop() : lenisRef.start(); }
         else          { document.body.style.overflow = open ? 'hidden' : ''; }
     });
@@ -135,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const openModal = (e) => {
         e.preventDefault();
         briefModal.classList.add('active');
+        briefModal.removeAttribute('aria-hidden');
         if (lenisRef) lenisRef.stop();
         document.body.style.overflow = 'hidden';
         overlay.classList.remove('active');
@@ -148,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!confirmClose) return;
         }
         briefModal.classList.remove('active');
+        briefModal.setAttribute('aria-hidden', 'true');
         if (lenisRef) lenisRef.start();
         document.body.style.overflow = '';
         if (force) { briefForm.reset(); formDirty = false; }
@@ -180,8 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.style.opacity       = '0.55';
         btn.style.pointerEvents = 'none';
 
-        const endpoint = 'https://usebasin.com/f/16d3bed22a44';
+        const endpoint = '/api/submit-brief'; 
         const formData = new FormData(this);
+        
+        formData.append('source_url', window.location.href);
+        formData.append('timestamp', new Date().toISOString());
 
         try {
             const response = await fetch(endpoint, {

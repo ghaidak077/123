@@ -42,6 +42,7 @@
     <link rel="preload" as="image" href="1.avif" type="image/avif">
     <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-ExtraBold.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/SpaceMono-Regular.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/SpaceMono-Bold.woff2" crossorigin>
 
     <link rel="stylesheet" href="main.css">
     <script>document.documentElement.classList.remove('no-js');</script>
@@ -49,19 +50,38 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
+      "@type": "ProfessionalService",
       "name": "Ghaidak Alosh",
       "url": "https://ghaidak.com",
-      "jobTitle": "Senior Brand Designer",
+      "description": "Senior brand identity designer for ambitious Gulf founders. Strategy-first visual identity, investor assets, and full brand systems across KSA, UAE, and global markets.",
+      "founder": {
+        "@type": "Person",
+        "name": "Ghaidak Alosh",
+        "jobTitle": "Senior Brand Designer & Strategist",
+        "sameAs": [
+          "https://linkedin.com/in/ghaidak-alosh",
+          "https://behance.net/ghaidakalo5fb4",
+          "https://github.com/ghaidak077"
+        ]
+      },
+      "areaServed": ["SA", "AE", "KW", "QA", "BH", "OM", "Global"],
+      "serviceType": ["Brand Identity", "Visual Strategy", "Pitch Deck Design", "Investor Materials"],
+      "priceRange": "$500 - $7,000+",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Arabic"]
+      },
       "sameAs": [
         "https://linkedin.com/in/ghaidak-alosh",
-        "https://behance.net/ghaidakalo5fb4",
-        "https://github.com/ghaidak077"
+        "https://behance.net/ghaidakalo5fb4"
       ]
     }
     </script>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <div class="scroll-progress" id="scrollProgress"></div>
 <div class="cursor-dot"  id="cursorDot"></div>
@@ -105,11 +125,11 @@
     <section class="hero-section" id="hero" aria-label="Introduction">
         <div class="hero-top reveal-up">
             <div class="hero-left">
-                <h1 class="hero-kicker">Ghaidak Alosh | For Founders Who Build to Lead</h1>
-                <h2 class="mega-type">
+                <p class="hero-kicker">Ghaidak Alosh | For Founders Who Build to Lead</p>
+                <h1 class="mega-type">
                     YOUR NAME DESERVES<br>
                     <span class="accent-text">A BRAND THAT MATCHES IT.</span>
-                </h2>
+                </h1>
             </div>
             <div class="hero-spec-panel" aria-label="Quick stats">
                 <div class="spec-row">
@@ -117,8 +137,8 @@
                     <span class="spec-val gold">6+ Years</span>
                 </div>
                 <div class="spec-row">
-                    <span class="spec-label">Projects Delivered</span>
-                    <span class="spec-val">200+</span>
+                    <span class="spec-label">Track Record</span>
+                    <span class="spec-val gold">80% Repeat Rate · 7-Year Record</span>
                 </div>
                 <div class="spec-row">
                     <span class="spec-label">Client Regions</span>
@@ -166,10 +186,10 @@
     <section id="portfolio" class="portfolio-showcase" aria-label="Selected work">
         <div class="portfolio-backgrounds" aria-hidden="true">
             <img src="1.avif" class="port-bg is-active" id="bg-1" alt="" width="1920" height="1080" fetchpriority="high" loading="eager" decoding="sync">
-            <img src="2.avif" class="port-bg" id="bg-2" alt="" width="1920" height="1080" loading="eager" decoding="async">
-            <img src="3.avif" class="port-bg" id="bg-3" alt="" width="1920" height="1080" loading="eager" decoding="async">
-            <img src="4.avif" class="port-bg" id="bg-4" alt="" width="1920" height="1080" loading="eager" decoding="async">
-            <img src="5.avif" class="port-bg" id="bg-5" alt="" width="1920" height="1080" loading="eager" decoding="async">
+            <img src="2.avif" class="port-bg" id="bg-2" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+            <img src="3.avif" class="port-bg" id="bg-3" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+            <img src="4.avif" class="port-bg" id="bg-4" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+            <img src="5.avif" class="port-bg" id="bg-5" alt="" width="1920" height="1080" loading="lazy" decoding="async">
             <div class="port-overlay"></div>
         </div>
 
