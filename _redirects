@@ -1,0 +1,10 @@
+# ═══════════════════════════════════════════════════════════════
+#  ghaidak.com — Cloudflare Pages _redirects
+#  Drop this file in your project root (same level as index.html)
+# ═══════════════════════════════════════════════════════════════
+
+# Redirect www → non-www (set up in CF dashboard too, but belt-and-suspenders)
+https://www.ghaidak.com/* https://ghaidak.com/:splat 301
+
+# SPA fallback — serve index.html for any unmatched route
+/*  /index.html  200

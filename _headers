@@ -1,19 +1,81 @@
-/*
-  X-Frame-Options: DENY [cite: 1]
-  X-Content-Type-Options: nosniff [cite: 1]
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload [cite: 1, 2]
-  Referrer-Policy: strict-origin-when-cross-origin 
-  Permissions-Policy: camera=(), microphone=(), geolocation=() 
-  Content-Security-Policy: default-src 'self' ; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net ; style-src 'self' 'unsafe-inline' ; font-src 'self' [cite: 3]; img-src 'self' data: blob: [cite: 3]; media-src 'self' [cite: 3]; connect-src 'self' [cite: 3]; frame-ancestors 'none' 
+# ═══════════════════════════════════════════════════════════════
+#  ghaidak.com — Cloudflare Pages _headers
+#  Drop this file in your project root (same level as index.html)
+# ═══════════════════════════════════════════════════════════════
 
+# ── All pages ───────────────────────────────────────────────────
+/*
+  # Force browsers to always use HTTPS for 2 years + preload list eligible
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+  # Disallow embedding in iframes (clickjacking protection)
+  X-Frame-Options: DENY
+
+  # Prevent MIME-type sniffing
+  X-Content-Type-Options: nosniff
+
+  # Don't leak full referrer to third-party domains
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Disable unused browser features
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+
+  # Content Security Policy
+  # - Scripts: self + GSAP CDN + Lenis CDN
+  # - Styles: self + inline (needed for GSAP/Lenis runtime styles)
+  # - Fonts: self only (fonts are self-hosted)
+  # - Images: self + data URIs + HTTPS (for og-image, external if any)
+  # - Connect: self (no external API calls from this site)
+  # - Frames, objects, base: all locked down
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'
+
+  # Remove server fingerprinting
+  X-Powered-By: none
+
+
+# ── Static assets — aggressive long-term caching ────────────────
+# Fonts
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Images
+/*.avif
+  Cache-Control: public, max-age=31536000, immutable
+
 /*.webp
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.svg
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/logo/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS & JS — 1 year, immutable (rename files to bust cache on deploy)
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+
+# ── HTML — short cache, always revalidate ───────────────────────
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+
+# ── SEO & meta files — revalidate daily ─────────────────────────
+/sitemap.xml
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/robots.txt
+  Cache-Control: public, max-age=86400, must-revalidate
