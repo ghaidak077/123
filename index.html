@@ -2,28 +2,20 @@
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Ghaidak Alosh | Senior Brand & SaaS Designer</title>
-    <meta name="description" content="Senior visual strategist engineering brand identities and UI/UX systems for scaling SaaS and international enterprises.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Ghaidak Alosh | Brand Identity for Gulf Founders</title>
+    <meta name="description" content="I build brand identities for ambitious Gulf founders who are serious about where they're going — and serious about how they're seen getting there.">
 
     <link rel="canonical" href="https://ghaidak.com/">
-    <meta property="og:title" content="Ghaidak Alosh | Brand Identity & Visual Strategy">
-    <meta property="og:description" content="Senior visual strategist engineering brand identities and UI/UX systems.">
+    <meta property="og:title" content="Ghaidak Alosh | Brand Identity for Gulf Founders">
+    <meta property="og:description" content="Built for founders who take their name seriously. Brand identity and visual strategy across KSA, UAE, and beyond.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ghaidak.com/">
     <meta property="og:image" content="https://ghaidak.com/og-image.webp">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ghaidak Alosh | Brand Identity">
-    <meta name="twitter:image" content="https://ghaidak.com/og-image.webp">
-
-    <!-- Apple / PWA -->
-    <meta name="theme-color" content="#030303" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#030303">
+    
+    <meta name="theme-color" content="#040404">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Ghaidak">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
 
     <link rel="icon" type="image/svg+xml" href="tab_logo.svg">
     <link rel="apple-touch-icon" href="tab_logo.svg">
@@ -32,148 +24,267 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
     <link rel="preload" as="image" href="1.avif" type="image/avif">
-    <link rel="preload" as="image" href="2.avif" type="image/avif">
-    <link rel="preload" as="image" href="3.avif" type="image/avif">
-    <link rel="preload" as="image" href="4.avif" type="image/avif">
-    <link rel="preload" as="image" href="5.avif" type="image/avif">
     <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-ExtraBold.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/SpaceMono-Regular.woff2" crossorigin>
 
     <link rel="stylesheet" href="main.css">
-
-    <!-- Remove no-js immediately so CSS fallbacks work if JS fails -->
     <script>document.documentElement.classList.remove('no-js');</script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Ghaidak Alosh Design Studio",
-      "image": "https://ghaidak.com/me.avif",
-      "url": "https://ghaidak.com",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "AE"
-      },
-      "sameAs": [
-        "https://linkedin.com/in/ghaidak-alosh",
-        "https://behance.net/ghaidakalo5fb4"
-      ]
-    }
-    </script>
 </head>
 <body>
 
 <div class="scroll-progress" id="scrollProgress"></div>
-<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-dot"  id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
 <div class="vfx-core">
     <div class="vfx-grid"></div>
     <div class="vfx-glow"></div>
 </div>
-<div class="noise-overlay"></div>
 
 <button id="scrollTop" class="scroll-top-btn" aria-label="Scroll to top">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<nav class="hud-nav glass hover-trigger" aria-label="Primary">
+<!-- ── NAV ────────────────────────────────────────────────────── -->
+<nav class="hud-nav glass hover-trigger" aria-label="Primary navigation">
     <div class="hud-left">
-        <a href="#hero" aria-label="Ghaidak Alosh Home">
-            <img src="logo.svg" alt="Ghaidak Alosh" class="nav-logo" width="130" height="22" onerror="this.outerHTML='<span style=\'font-family:var(--font-h);font-weight:800;font-size:1.4rem;letter-spacing:-.05em;color:var(--ink);\'>GA.</span>'" />
+        <a href="#hero" aria-label="Ghaidak Alosh — Home">
+            <img src="logo.svg" alt="Ghaidak Alosh" class="nav-logo" width="130" height="22"
+                 onerror="this.outerHTML='<span style=\'font-family:var(--font-h);font-weight:800;font-size:1.3rem;letter-spacing:-.05em;color:var(--ink);\'>GA.</span>'" />
         </a>
     </div>
     <div class="hud-right-group">
-        <a href="#expertise" class="nav-link hide-mobile hover-trigger">Expertise</a>
-        <a href="#portfolio" class="nav-link hide-mobile hover-trigger">Work</a>
-        <a href="#about" class="nav-link hide-mobile hover-trigger">Profile</a>
+        <a href="#portfolio"    class="nav-link hide-mobile hover-trigger">Work</a>
         <a href="#testimonials" class="nav-link hide-mobile hover-trigger">Reputation</a>
-        <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="btn-gold hover-trigger"><span>START PROJECT</span></a>
+        <a href="#expertise"    class="nav-link hide-mobile hover-trigger">Expertise</a>
+        <a href="#about"        class="nav-link hide-mobile hover-trigger">Profile</a>
+        <button class="btn-gold open-brief hover-trigger"><span>START PROJECT</span></button>
     </div>
     <button class="mobile-menu-btn hover-trigger" id="menuBtn" aria-label="Open menu">MENU</button>
 </nav>
 
-<div class="mobile-overlay" id="mobileOverlay">
-    <a href="#expertise" class="mobile-link hover-trigger">Expertise</a>
-    <a href="#portfolio" class="mobile-link hover-trigger">Work</a>
-    <a href="#about" class="mobile-link hover-trigger">Profile</a>
+<!-- ── MOBILE OVERLAY ─────────────────────────────────────────── -->
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-label="Navigation menu">
+    <a href="#portfolio"    class="mobile-link hover-trigger">Work</a>
     <a href="#testimonials" class="mobile-link hover-trigger">Reputation</a>
-    <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="mobile-link hover-trigger">Contact</a>
+    <a href="#expertise"    class="mobile-link hover-trigger">Expertise</a>
+    <a href="#about"        class="mobile-link hover-trigger">Profile</a>
+    <button class="mobile-link open-brief hover-trigger" style="color:var(--accent);background:none;">Start Project</button>
 </div>
 
 <main id="main">
-    <section class="hero-section" id="hero">
+
+    <!-- ── HERO ───────────────────────────────────────────────── -->
+    <section class="hero-section" id="hero" aria-label="Introduction">
         <div class="hero-top reveal-up">
             <div class="hero-left">
-                <div class="hero-kicker">Senior Visual Strategist</div>
+                <div class="hero-kicker">For Founders Who Build to Lead</div>
                 <h1 class="mega-type">
-                    TURN YOUR BRAND<br>
-                    <span class="accent-text">INTO AN ASSET.</span>
+                    YOUR NAME DESERVES<br>
+                    <span class="accent-text">A BRAND THAT MATCHES IT.</span>
                 </h1>
             </div>
             <div class="hero-spec-panel">
-                <div class="spec-row"><span class="spec-label">Experience</span><span class="spec-val gold">6+ Years</span></div>
-                <div class="spec-row"><span class="spec-label">Projects Delivered</span><span class="spec-val">200+</span></div>
-                <div class="spec-row"><span class="spec-label">Client Regions</span><span class="spec-val">N. America · EU · MENA</span></div>
-                <div class="spec-row"><span class="spec-label">Specialisation</span><span class="spec-val">Brand & SaaS Systems</span></div>
+                <div class="spec-row">
+                    <span class="spec-label">Experience</span>
+                    <span class="spec-val gold">6+ Years</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Projects Delivered</span>
+                    <span class="spec-val">200+</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Client Regions</span>
+                    <span class="spec-val">KSA · UAE · Gulf · Global</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Specialisation</span>
+                    <span class="spec-val">Brand &amp; Visual Strategy</span>
+                </div>
             </div>
         </div>
 
         <div class="hero-bottom reveal-up">
-            <p class="hero-desc">I engineer digital trust and authority for scaling companies. High-fidelity execution. Zero agency bloat. One dedicated partner.</p>
+            <p class="hero-desc">You didn't build this far to look like everyone else. I create brand identities for Gulf founders who are serious about where they're going — and serious about how they're seen getting there.</p>
             <div class="cta-group">
-                <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="btn-gold hover-trigger" aria-label="Start Project on WhatsApp"><span>START PROJECT</span></a>
-                <a href="https://tally.so/r/mRDQkK" target="_blank" rel="noopener" class="btn-ghost hover-trigger"><span>APPLY FOR PARTNERSHIP</span></a>
+                <button class="btn-gold open-brief hover-trigger"><span>START PROJECT</span></button>
+                <a href="#portfolio" class="btn-ghost hover-trigger"><span>VIEW WORK</span></a>
             </div>
         </div>
 
-        <div class="scroll-hint">
-            <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="14" height="22" rx="7"/><line x1="8" y1="7" x2="8" y2="11"/></svg>
+        <div class="scroll-hint" aria-hidden="true">
+            <svg width="14" height="22" viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="14" height="22" rx="7"/><line x1="8" y1="7" x2="8" y2="11"/></svg>
             SCROLL
         </div>
     </section>
 
-    <section class="marquee-section reveal-up">
-        <div class="marquee-track">
-            <div class="marquee-content">
-                <span>SCALING BRANDS ACROSS INDUSTRIES</span><span class="divider">✦</span>
-                <span>SENIOR VISUAL STRATEGIST</span><span class="divider">✦</span>
-                <span>200+ PROJECTS DELIVERED</span><span class="divider">✦</span>
-                <span>SCALING BRANDS ACROSS INDUSTRIES</span><span class="divider">✦</span>
-                <span>SENIOR VISUAL STRATEGIST</span><span class="divider">✦</span>
-                <span>200+ PROJECTS DELIVERED</span><span class="divider">✦</span>
+    <!-- ── PARTNER STRIP ──────────────────────────────────────── -->
+    <section class="partner-section reveal-up" aria-label="Trusted by founders across the Gulf">
+        <div class="partner-label"><span>Trusted by Founders Across the Gulf and Beyond</span></div>
+        <div class="marquee-track logos-track" aria-hidden="true">
+            <div class="marquee-content logos-content">
+                <img src="logo/1.svg" alt="" loading="lazy">
+                <img src="logo/2.svg" alt="" loading="lazy">
+                <img src="logo/3.svg" alt="" loading="lazy">
+                <img src="logo/4.svg" alt="" loading="lazy">
+                <img src="logo/5.svg" alt="" loading="lazy">
+                <!-- duplicated for seamless loop -->
+                <img src="logo/1.svg" alt="" loading="lazy">
+                <img src="logo/2.svg" alt="" loading="lazy">
+                <img src="logo/3.svg" alt="" loading="lazy">
+                <img src="logo/4.svg" alt="" loading="lazy">
+                <img src="logo/5.svg" alt="" loading="lazy">
             </div>
         </div>
     </section>
 
-    <section id="expertise">
+    <!-- ── PORTFOLIO ──────────────────────────────────────────── -->
+    <section id="portfolio" class="portfolio-showcase" aria-label="Selected work">
+        <div class="portfolio-backgrounds" aria-hidden="true">
+            <img src="1.avif" class="port-bg is-active" id="bg-1" alt="" width="1920" height="1080" fetchpriority="high" loading="eager" decoding="sync">
+            <img src="2.avif" class="port-bg" id="bg-2" alt="" width="1920" height="1080" loading="eager" decoding="async">
+            <img src="3.avif" class="port-bg" id="bg-3" alt="" width="1920" height="1080" loading="eager" decoding="async">
+            <img src="4.avif" class="port-bg" id="bg-4" alt="" width="1920" height="1080" loading="eager" decoding="async">
+            <img src="5.avif" class="port-bg" id="bg-5" alt="" width="1920" height="1080" loading="eager" decoding="async">
+            <div class="port-overlay"></div>
+        </div>
+
+        <div class="portfolio-content">
+            <div class="section-header reveal-up" style="position:relative;z-index:10;margin-bottom:0;padding-left:var(--pad-x);padding-right:var(--pad-x);">
+                <h2><span>PORTFOLIO (05)</span><span>SELECTED CASE STUDIES</span></h2>
+            </div>
+
+            <a href="https://www.behance.net/gallery/144161981/Wade-Fit-Studio-Logo" target="_blank" rel="noopener noreferrer"
+               class="port-item is-active hover-trigger" data-target="bg-1" aria-label="View Wade Fit Studio project on Behance">
+                <div class="port-depth-num" aria-hidden="true">01</div>
+                <div class="port-text-wrap">
+                    <span class="port-meta">01 / FITNESS</span>
+                    <h3 class="port-title">WADE FIT STUDIO</h3>
+                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </div>
+            </a>
+
+            <a href="https://www.behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer"
+               class="port-item hover-trigger" data-target="bg-2" aria-label="View Biz Talk Cards project on Behance">
+                <div class="port-depth-num" aria-hidden="true">02</div>
+                <div class="port-text-wrap">
+                    <span class="port-meta">02 / B2B ENTERPRISE</span>
+                    <h3 class="port-title">BIZ TALK CARDS</h3>
+                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </div>
+            </a>
+
+            <a href="https://www.behance.net/gallery/162997763/LUMI-Creative-Agency-Logo" target="_blank" rel="noopener noreferrer"
+               class="port-item hover-trigger" data-target="bg-3" aria-label="View Lumi Creative Agency project on Behance">
+                <div class="port-depth-num" aria-hidden="true">03</div>
+                <div class="port-text-wrap">
+                    <span class="port-meta">03 / AGENCY</span>
+                    <h3 class="port-title">LUMI CREATIVE</h3>
+                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </div>
+            </a>
+
+            <a href="https://www.behance.net/gallery/234138399/NovaTech-Solutions" target="_blank" rel="noopener noreferrer"
+               class="port-item hover-trigger" data-target="bg-4" aria-label="View NovaTech Solutions project on Behance">
+                <div class="port-depth-num" aria-hidden="true">04</div>
+                <div class="port-text-wrap">
+                    <span class="port-meta">04 / FINTECH</span>
+                    <h3 class="port-title">NOVATECH</h3>
+                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </div>
+            </a>
+
+            <a href="https://www.behance.net/gallery/188005453/Al-Nargis-Beauty-Brand-Identity" target="_blank" rel="noopener noreferrer"
+               class="port-item hover-trigger" data-target="bg-5" aria-label="View Al Nargis Beauty project on Behance">
+                <div class="port-depth-num" aria-hidden="true">05</div>
+                <div class="port-text-wrap">
+                    <span class="port-meta">05 / RETAIL</span>
+                    <h3 class="port-title">AL NARGIS</h3>
+                    <span class="port-arrow">See full case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ───────────────────────────────────────── -->
+    <section id="testimonials" class="testimonials-section section-wrapper" aria-label="Client testimonials">
+        <div class="section-header reveal-up">
+            <h2><span>REPUTATION (03)</span><span>CLIENT VOICES</span></h2>
+        </div>
+        <div class="editorial-reviews-grid">
+
+            <article class="editorial-review reveal-up hover-trigger">
+                <div class="er-index">01</div>
+                <blockquote class="er-body">
+                    <p class="er-quote">"It is rare to find premium quality combined with speed. Deadlines are respected. Delivery is production-ready. A vital asset to our scaling process."</p>
+                    <footer class="er-footer">
+                        <div class="er-author">
+                            <cite class="er-name">Emad Al Tayeb</cite>
+                            <span class="er-role">Founder, B2B Enterprise SaaS · UAE</span>
+                        </div>
+                        <span class="er-scope">B2B SaaS Architecture</span>
+                    </footer>
+                </blockquote>
+            </article>
+
+            <article class="editorial-review reveal-up hover-trigger" style="transition-delay:.1s">
+                <div class="er-index">02</div>
+                <blockquote class="er-body">
+                    <p class="er-quote">"He listens deeply, challenges ideas honestly, and delivers at a very high level. The strategic depth he brings entirely redefined our market positioning."</p>
+                    <footer class="er-footer">
+                        <div class="er-author">
+                            <cite class="er-name">Troye Siadian</cite>
+                            <span class="er-role">CEO, NovaKepler LLC · USA</span>
+                        </div>
+                        <span class="er-scope">Global Brand Strategy</span>
+                    </footer>
+                </blockquote>
+            </article>
+
+            <article class="editorial-review reveal-up hover-trigger" style="transition-delay:.2s">
+                <div class="er-index">03</div>
+                <blockquote class="er-body">
+                    <p class="er-quote">"His work feels alive. Strategic, sharp, and executed with absolute precision. He takes full ownership of the visual problem and returns a flawless solution."</p>
+                    <footer class="er-footer">
+                        <div class="er-author">
+                            <cite class="er-name">Salim Albitar</cite>
+                            <span class="er-role">Independent Partner · Global</span>
+                        </div>
+                        <span class="er-scope">Visual Identity System</span>
+                    </footer>
+                </blockquote>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ── EXPERTISE ──────────────────────────────────────────── -->
+    <section id="expertise" aria-label="Process and capabilities">
         <div class="section-wrapper">
             <div class="section-header reveal-up">
                 <h2><span>HOW I WORK (03)</span><span>THE PROCESS</span></h2>
             </div>
-            
+
             <div class="process-list">
                 <div class="process-item reveal-up hover-trigger">
                     <span class="process-num">01</span>
                     <div>
                         <h3 class="process-title">Diagnose before design.</h3>
-                        <p class="process-body">Most brand problems are <strong>positioning problems in disguise</strong>. Before opening Figma, I audit your market and map your audience. I find the visual gap your brand will own.</p>
+                        <p class="process-body">Most brand problems are <strong>positioning problems in disguise</strong>. Before a single mark is drawn, I study your market, your competitors, and your audience. I find the space your brand will own — and own it completely.</p>
                     </div>
                 </div>
                 <div class="process-item reveal-up hover-trigger">
                     <span class="process-num">02</span>
                     <div>
                         <h3 class="process-title">Build the entire system.</h3>
-                        <p class="process-body">One point of contact. <strong>Identity, UI/UX, marketing decks, and social systems</strong>. No handoffs. A completely consistent visual language, built by one mind.</p>
+                        <p class="process-body">One point of contact. <strong>Identity, investor materials, and global visual systems</strong>. No handoffs, no juniors, no excuses. A completely consistent visual language — built by one senior mind, start to finish.</p>
                     </div>
                 </div>
                 <div class="process-item reveal-up hover-trigger">
                     <span class="process-num">03</span>
                     <div>
                         <h3 class="process-title">Hand over and step back.</h3>
-                        <p class="process-body">Everything is <strong>documented, named, and structured</strong>. Your team takes over instantly. Zero forced dependency. Built for you to scale.</p>
+                        <p class="process-body">Everything is <strong>documented, named, and structured for your team</strong>. You take full ownership from day one. Built to last — not to keep you dependent.</p>
                     </div>
                 </div>
             </div>
@@ -183,92 +294,31 @@
                 <div class="capabilities-grid">
                     <div class="cap-card hover-trigger">
                         <div class="cap-icon">✦</div>
-                        <h4>Brand Identity</h4>
-                        <p>Logo architecture, typography, and robust global guidelines.</p>
+                        <h4>Strategic Branding</h4>
+                        <p>Identities that command respect in every boardroom, every market, and every conversation — built to last for decades.</p>
                     </div>
                     <div class="cap-card hover-trigger">
                         <div class="cap-icon">✦</div>
-                        <h4>Marketing Assets</h4>
-                        <p>High-converting pitch decks and comprehensive brand collateral.</p>
+                        <h4>Market Presence</h4>
+                        <p>High-fidelity marketing visuals and social systems that make your competitors take notice and your clients feel confident.</p>
                     </div>
                     <div class="cap-card hover-trigger">
                         <div class="cap-icon">✦</div>
-                        <h4>UI & Product Design</h4>
-                        <p>Web applications and SaaS interfaces. Scalable component libraries.</p>
+                        <h4>Board-Ready Assets</h4>
+                        <p>Investor pitch decks and premium corporate materials engineered to carry weight before you walk in the room.</p>
                     </div>
                     <div class="cap-card hover-trigger">
                         <div class="cap-icon">✦</div>
-                        <h4>Digital Platforms</h4>
-                        <p>Flawless web execution across English and Arabic layouts.</p>
+                        <h4>Visual Strategy</h4>
+                        <p>Expert creative direction that aligns your visual presence with your true market position — and where you're going next.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio" class="portfolio-showcase">
-        <div class="portfolio-backgrounds">
-            <img src="1.avif" class="port-bg is-active" id="bg-1" alt="Wade Fit Studio"     width="1920" height="1080" fetchpriority="high" loading="eager" decoding="sync">
-            <img src="2.avif" class="port-bg"           id="bg-2" alt="Biz Talk Cards"       width="1920" height="1080" fetchpriority="high" loading="eager" decoding="async">
-            <img src="3.avif" class="port-bg"           id="bg-3" alt="Lumi Creative Agency" width="1920" height="1080" fetchpriority="high" loading="eager" decoding="async">
-            <img src="4.avif" class="port-bg"           id="bg-4" alt="NovaTech Solutions"   width="1920" height="1080" fetchpriority="high" loading="eager" decoding="async">
-            <img src="5.avif" class="port-bg"           id="bg-5" alt="Al Nargis Beauty"     width="1920" height="1080" fetchpriority="high" loading="eager" decoding="async">
-            <div class="port-overlay"></div>
-        </div>
-
-        <div class="portfolio-content">
-            <div class="section-header reveal-up" style="position:relative;z-index:10;margin-bottom:0">
-                <h2><span>PORTFOLIO (05)</span><span>SELECTED CASE STUDIES</span></h2>
-            </div>
-
-            <a href="https://www.behance.net/gallery/144161981/Wade-Fit-Studio-Logo" target="_blank" rel="noopener noreferrer" class="port-item is-active hover-trigger" data-target="bg-1" aria-label="View Wade Fit Studio Project">
-                <div class="port-depth-num">01</div>
-                <div class="port-text-wrap">
-                    <span class="port-meta">01 / FITNESS</span>
-                    <h3 class="port-title">WADE FIT STUDIO</h3>
-                    <span class="port-arrow">See full case <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="https://www.behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-2" aria-label="View Biz Talk Cards Project">
-                <div class="port-depth-num">02</div>
-                <div class="port-text-wrap">
-                    <span class="port-meta">02 / B2B ENTERPRISE</span>
-                    <h3 class="port-title">BIZ TALK CARDS</h3>
-                    <span class="port-arrow">See full case <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="https://www.behance.net/gallery/162997763/LUMI-Creative-Agency-Logo" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-3" aria-label="View Lumi Creative Agency Project">
-                <div class="port-depth-num">03</div>
-                <div class="port-text-wrap">
-                    <span class="port-meta">03 / AGENCY</span>
-                    <h3 class="port-title">LUMI CREATIVE</h3>
-                    <span class="port-arrow">See full case <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="https://www.behance.net/gallery/234138399/NovaTech-Solutions" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-4" aria-label="View NovaTech Solutions Project">
-                <div class="port-depth-num">04</div>
-                <div class="port-text-wrap">
-                    <span class="port-meta">04 / FINTECH</span>
-                    <h3 class="port-title">NOVATECH</h3>
-                    <span class="port-arrow">See full case <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="https://www.behance.net/gallery/188005453/Al-Nargis-Beauty-Brand-Identity" target="_blank" rel="noopener noreferrer" class="port-item hover-trigger" data-target="bg-5" aria-label="View Al Nargis Beauty Project">
-                <div class="port-depth-num">05</div>
-                <div class="port-text-wrap">
-                    <span class="port-meta">05 / RETAIL</span>
-                    <h3 class="port-title">AL NARGIS</h3>
-                    <span class="port-arrow">See full case <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <section id="about" class="profile-section">
+    <!-- ── PROFILE ────────────────────────────────────────────── -->
+    <section id="about" class="profile-section" aria-label="About Ghaidak Alosh">
         <div class="profile-content">
             <div class="profile-header reveal-up">
                 <h2 class="jumbo-heading">THE<br>PARTNER</h2>
@@ -276,18 +326,18 @@
             <div class="profile-grid">
                 <div class="img-container reveal-up hover-trigger">
                     <div class="img-inner">
-                        <img src="me.avif" alt="Ghaidak Alosh | Senior Graphic Designer" width="420" height="560" loading="lazy" decoding="async">
+                        <img src="me.avif" alt="Ghaidak Alosh — Senior Brand Strategist" width="800" height="1000" loading="lazy" decoding="async">
                     </div>
                 </div>
                 <div class="bio-container reveal-up">
                     <p class="bio-title">Ghaidak Alosh</p>
-                    <p class="bio-text">With 6+ years of experience and 200+ projects delivered, I architect scalable brand infrastructure for global businesses.</p>
-                    <p class="bio-text">I operate globally, serving enterprises across North America, Europe, and the Middle East. I own the visual problem. I return the solution.</p>
-                    
+                    <p class="bio-text">I work with one type of client — ambitious founders who know their business is bigger than their current brand suggests.</p>
+                    <p class="bio-text">If you're scaling, raising capital, entering new markets, or building something you want your name on for the next 20 years, that's exactly where I come in. I don't take every project. I take the right ones.</p>
+
                     <div class="stats-row">
                         <div class="stat hover-trigger">
                             <span class="label">Availability</span>
-                            <span class="val">Limited Retainers Open</span>
+                            <span class="val">Accepting Select Projects — Q2 2026</span>
                         </div>
                         <div class="stat hover-trigger">
                             <span class="label">Location</span>
@@ -301,64 +351,98 @@
 
                     <div class="social-row">
                         <a href="https://linkedin.com/in/ghaidak-alosh" target="_blank" rel="noopener noreferrer" class="social-link hover-trigger">LinkedIn</a>
-                        <a href="https://behance.net/ghaidakalo5fb4" target="_blank" rel="noopener noreferrer" class="social-link hover-trigger">Behance</a>
-                        <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="social-link hover-trigger">WhatsApp</a>
+                        <a href="https://behance.net/ghaidakalo5fb4"      target="_blank" rel="noopener noreferrer" class="social-link hover-trigger">Behance</a>
+                        <a href="https://wa.link/649ato"                   target="_blank" rel="noopener noreferrer" class="social-link hover-trigger">WhatsApp</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="testimonials" class="testimonials-section">
-        <div class="section-header reveal-up">
-            <h2><span>REPUTATION (03)</span><span>CLIENT VOICES</span></h2>
-        </div>
-        <div class="reviews-grid">
-            <div class="review-card hover-trigger reveal-up">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"It is rare to find premium quality combined with speed. Deadlines are respected. Delivery is production-ready."</p>
-                <div class="review-author">
-                    <strong>Emad Al Tayeb</strong>
-                    <span>Founder, B2B Enterprise SaaS | UAE</span>
-                </div>
-            </div>
-            <div class="review-card hover-trigger reveal-up" style="transition-delay:.1s">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"He listens deeply, challenges ideas honestly, and delivers at a very high level."</p>
-                <div class="review-author">
-                    <strong>Troye Siadian</strong>
-                    <span>CEO, NovaKepler LLC | USA</span>
-                </div>
-            </div>
-            <div class="review-card hover-trigger reveal-up" style="transition-delay:.2s">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"His work feels alive. Strategic, sharp, and executed with precision."</p>
-                <div class="review-author">
-                    <strong>Salim Albitar</strong>
-                    <span>Independent Partner | Global</span>
-                </div>
+    <!-- ── CTA ────────────────────────────────────────────────── -->
+    <section id="contact" class="cta-section" aria-label="Contact and start a project">
+        <div class="cta-inner reveal-up">
+            <div class="avail-badge"><span class="avail-dot"></span> Accepting select projects — Q2 2026</div>
+            <div class="cta-eyebrow">Ready when you are.</div>
+            <h2 class="cta-headline">Your brand is<br>your reputation.<br><span class="cta-accent">Don't settle.</span></h2>
+            <p class="cta-sub">One senior partner. No juniors, no handoffs, no excuses. From the first conversation to final delivery — I own it.</p>
+            <div class="cta-actions">
+                <button class="btn-gold open-brief hover-trigger"><span>START PROJECT</span></button>
+                <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="btn-ghost hover-trigger"><span>MESSAGE ON WHATSAPP</span></a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="cta-section">
-        <div class="cta-inner reveal-up">
-            <div class="avail-badge"><span class="avail-dot"></span> Available for new projects</div>
-            <div class="cta-eyebrow">Ready to start?</div>
-            <h2 class="cta-headline">Let's build<br>something<br><span class="cta-accent">valuable.</span></h2>
-            <p class="cta-sub">One partnership. Full ownership. From strategy to final delivery, without the agency overhead.</p>
-            <div class="cta-actions">
-                <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer" class="btn-gold hover-trigger"><span>START ON WHATSAPP</span></a>
-                <a href="https://tally.so/r/mRDQkK" target="_blank" rel="noopener" class="btn-ghost hover-trigger"><span>APPLY FOR PARTNERSHIP</span></a>
-            </div>
-        </div>
-    </section>
 </main>
 
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
 <footer class="site-footer">
     <span>© 2026 Ghaidak Alosh. All rights reserved.</span>
-    <span>Brand Identity & Visual Strategy · Worldwide</span>
+    <span>Built for founders who take their name seriously.</span>
 </footer>
+
+<!-- ── BRIEF MODAL ────────────────────────────────────────────── -->
+<div class="brief-modal" id="briefModal" role="dialog" aria-modal="true" aria-labelledby="briefModalTitle">
+    <div class="brief-glass" data-lenis-prevent>
+        <button class="close-brief hover-trigger" id="closeBrief" aria-label="Close modal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <form class="brief-form" id="briefForm" novalidate>
+            <div class="form-header">
+                <h2 class="brief-h" id="briefModalTitle">Let's Talk About Your Brand</h2>
+                <p class="brief-sub">Tell me about your vision. I'll take it from there.</p>
+            </div>
+
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="brief-name">Your Name *</label>
+                    <input type="text" id="brief-name" name="name" required placeholder="John Doe" class="brief-input" autocomplete="name">
+                </div>
+
+                <div class="input-group">
+                    <label for="brief-email">Email *</label>
+                    <input type="email" id="brief-email" name="email" required placeholder="name@company.com" class="brief-input" autocomplete="email">
+                </div>
+
+                <div class="input-group full-width">
+                    <label for="brief-type">Project Type *</label>
+                    <select id="brief-type" name="type" required class="brief-select">
+                        <option value="" disabled selected>Select service...</option>
+                        <option value="brand">Brand Identity</option>
+                        <option value="pitch">Pitch Deck / Investor Assets</option>
+                        <option value="strategy">Full Visual Strategy</option>
+                    </select>
+                </div>
+
+                <div class="input-group full-width">
+                    <label for="brief-budget">Project Budget *</label>
+                    <input type="text" id="brief-budget" name="budget" required placeholder="Enter your budget — or choose a range below" class="brief-input" autocomplete="off">
+                    <select id="brief-budget-range" name="budget_range" class="brief-select budget-range-select">
+                        <option value="" disabled selected>Quick select a range...</option>
+                        <option value="starter">$500 – $1,500 &nbsp;·&nbsp; Starter Package</option>
+                        <option value="growth">$1,500 – $3,500 &nbsp;·&nbsp; Growth Package</option>
+                        <option value="premium">$3,500 – $7,000 &nbsp;·&nbsp; Premium Identity</option>
+                        <option value="enterprise">$7,000+ &nbsp;·&nbsp; Full Brand &amp; Strategy</option>
+                    </select>
+                </div>
+
+                <div class="input-group full-width">
+                    <label for="brief-goal">Where do you want this brand to take you? *</label>
+                    <input type="text" id="brief-goal" name="goal" required placeholder="e.g., Raise capital, dominate a new market, build lasting authority" class="brief-input">
+                </div>
+
+                <div class="input-group full-width">
+                    <label for="brief-challenge">What's not working right now? *</label>
+                    <textarea id="brief-challenge" name="challenge" required placeholder="Be direct. What does your brand fail to communicate today?" class="brief-input"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-gold form-submit-btn">
+                <span>START THE CONVERSATION →</span>
+            </button>
+        </form>
+    </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
