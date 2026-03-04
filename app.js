@@ -112,6 +112,9 @@
         if (formDirty && !force) {
             if (!window.confirm('You have unsaved details. Are you sure you want to close this?')) return;
         }
+        if (document.activeElement && briefModal?.contains(document.activeElement)) {
+            document.activeElement.blur();
+        }
         briefModal?.classList.remove('active');
         briefModal?.setAttribute('aria-hidden', 'true');
         lenisRef?.start();
