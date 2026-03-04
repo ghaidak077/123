@@ -6,7 +6,9 @@
  * 2. Scroll/Nav/Modal init immediately — no load event dependency
  * 3. GSAP/Lenis/ScrollTrigger wait for window.load
  * 4. Desktop enhancements (cursor, magnetic, neon) fire at requestIdleCallback
- * 5. No hamburger menu — removed. Nav = Logo + Glass CTA on all screen sizes.
+ * 5. No hamburger menu — Nav = Logo + Glass CTA on all screen sizes.
+ * 6. Page Visibility API pauses marquee when tab is backgrounded (GPU savings)
+ * 7. will-change set only on hover, not permanently (no wasted layer promotion)
  */
 
 (function () {
@@ -29,6 +31,14 @@
             a.setAttribute('href', WA_HREF);
         });
     })();
+
+    // ─── Page Visibility API: pause marquee on background tab ─
+    const logosContent = $('#logosContent');
+    document.addEventListener('visibilitychange', () => {
+        if (!logosContent) return;
+        logosContent.style.animationPlayState =
+            document.hidden ? 'paused' : 'running';
+    });
 
     // ═══════════════════════════════════════════════════════════
     // STEP 1: HERO REVEAL SETUP
@@ -135,8 +145,7 @@
         if (e.key === 'Escape' && briefModal?.classList.contains('active')) closeModal(null);
     });
 
-    // ─── Form submission ──────────────────────────────────────
-    // ── Inline field validation helpers ─────────────────────
+    // ─── Inline field validation ─────────────────────────────
     function isValidEmail(val) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val.trim());
     }
@@ -159,18 +168,18 @@
         if (err) err.remove();
     }
 
-    // Clear errors on input
     $$('.brief-input, .brief-select').forEach(el => {
-        el.addEventListener('input', () => clearFieldError(el));
+        el.addEventListener('input',  () => clearFieldError(el));
         el.addEventListener('change', () => clearFieldError(el));
     });
 
     function validateBriefForm(form) {
         let valid = true;
-        const name    = form.querySelector('#brief-name');
-        const contact = form.querySelector('#brief-contact');
-        const service = form.querySelector('#brief-service');
-        const budget  = form.querySelector('#brief-budget');
+        const name     = form.querySelector('#brief-name');
+        const contact  = form.querySelector('#brief-contact');
+        const service  = form.querySelector('#brief-service');
+        const budget   = form.querySelector('#brief-budget');
+        const timeline = form.querySelector('#brief-timeline');
 
         if (!name.value.trim()) {
             setFieldError(name, 'Please enter your name.'); valid = false;
@@ -191,6 +200,10 @@
             setFieldError(budget, 'Please select a budget range.'); valid = false;
         } else clearFieldError(budget);
 
+        if (timeline && !timeline.value) {
+            setFieldError(timeline, 'Please select a timeline.'); valid = false;
+        } else if (timeline) clearFieldError(timeline);
+
         return valid;
     }
 
@@ -199,7 +212,6 @@
         if (isSubmitting) return;
 
         if (!validateBriefForm(this)) {
-            // Shake the first errored field
             const firstErr = this.querySelector('.input-error');
             if (firstErr) {
                 firstErr.focus();
@@ -216,15 +228,14 @@
 
         const setState = (html, bg, color, pEvents) => {
             btn.innerHTML           = html;
-            btn.style.opacity       = pEvents === 'none' ? '0.55' : '1';
+            btn.style.opacity       = pEvents === 'none' ? '0.65' : '1';
             btn.style.background    = bg;
             btn.style.color         = color;
             btn.style.pointerEvents = pEvents;
         };
 
-        setState('<span>SENDING...</span>', 'var(--accent)', '#000', 'none');
+        setState('<span>Sending...</span>', 'var(--accent)', '#000', 'none');
 
-        // Basin endpoint — accepts JSON POST, returns 200 on success
         const BASIN_URL = 'https://usebasin.com/f/16d3bed22a44';
         const raw = new FormData(this);
         const payload = { source_url: window.location.href, timestamp: new Date().toISOString() };
@@ -243,7 +254,7 @@
             });
 
             if (response.ok) {
-                setState('<span>✓ BRIEF SECURED</span>', 'linear-gradient(135deg,#22c55e,#16a34a)', '#fff', 'none');
+                setState('<span>✓ Brief Received</span>', 'linear-gradient(135deg,#22c55e,#16a34a)', '#fff', 'none');
                 formDirty = false;
                 setTimeout(() => {
                     closeModal(null, true);
@@ -252,30 +263,12 @@
                     isSubmitting = false;
                 }, 2000);
             } else {
-                setState('<span>FAILED — TRY AGAIN</span>', 'linear-gradient(135deg,#dc2626,#b91c1c)', '#fff', 'auto');
+                setState('<span>Failed — try again</span>', 'linear-gradient(135deg,#dc2626,#b91c1c)', '#fff', 'auto');
                 setTimeout(() => { setState(originalHTML, '', '', 'auto'); reset(); isSubmitting = false; }, 3000);
             }
         } catch {
-            setState('<span>CONNECTION ERROR — TRY AGAIN</span>', 'rgba(255,255,255,0.08)', 'var(--ink)', 'auto');
+            setState('<span>Connection error — try again</span>', 'rgba(255,255,255,0.08)', 'var(--ink)', 'auto');
             setTimeout(() => { setState(originalHTML, '', '', 'auto'); reset(); isSubmitting = false; }, 3000);
-        }
-    });
-
-    // ─── Budget quick-select ──────────────────────────────────
-    const budgetInput  = $('#brief-budget');
-    const budgetRange  = $('#brief-budget-range');
-    const budgetLabels = {
-        starter:    '$500 - $1,500 (Starter Package)',
-        growth:     '$1,500 - $3,500 (Growth Package)',
-        premium:    '$3,500 - $7,000 (Premium Identity)',
-        enterprise: '$7,000+ (Full Brand & Strategy)',
-    };
-    budgetRange?.addEventListener('change', () => {
-        const label = budgetLabels[budgetRange.value];
-        if (label && budgetInput) {
-            budgetInput.value = label;
-            budgetInput.dispatchEvent(new Event('input'));
-            setTimeout(() => { budgetRange.selectedIndex = 0; }, 120);
         }
     });
 
@@ -293,7 +286,6 @@
         const portBgs   = $$('.port-bg');
 
         if (portItems.length > 0) {
-            // ── Progress navigation (desktop only) ────────────
             let progressNav = null;
             progressNav = document.createElement('nav');
             progressNav.className = 'port-progress-nav';
@@ -311,15 +303,17 @@
             });
             const portShowcase = document.querySelector('.portfolio-showcase');
             portShowcase?.appendChild(progressNav);
-            // Show/hide when portfolio section is in view
             const pNavIO = new IntersectionObserver(([entry]) => {
                 progressNav.classList.toggle('visible', entry.isIntersecting);
             }, { threshold: 0.05 });
             if (portShowcase) pNavIO.observe(portShowcase);
 
+            const portTints = $$('.port-bg-tint');
+
             const activateIndex = (idx) => {
                 portItems.forEach((item, i) => item.classList.toggle('is-active', i === idx));
                 portBgs.forEach((bg,   i) => bg.classList.toggle('is-active', i === idx));
+                portTints.forEach((tint, i) => tint.classList.toggle('is-active', i === idx));
                 if (progressNav) {
                     progressNav.querySelectorAll('.port-pdot').forEach((dot, i) => {
                         dot.classList.toggle('is-active', i === idx);
@@ -328,18 +322,14 @@
             };
 
             if (isMobile) {
-                // MOBILE: getBoundingClientRect scroll-based switching (iOS Safari compatible).
                 let activeIdx = 0;
                 activateIndex(0);
 
-                // Remove the static CSS blur-entry class — JS owns this filter directly.
-                // Class-based approach can never scrub smoothly; we need per-frame style writes.
                 if (portBgs[0]) {
                     portBgs[0].classList.remove('blur-entry');
                     portBgs[0].style.filter = 'blur(20px) brightness(.45)';
                 }
 
-                // Lerp helper: smoothly interpolate blur value each frame
                 const MAX_BLUR = 20;
                 let currentBlur = MAX_BLUR;
                 let targetBlur  = MAX_BLUR;
@@ -351,7 +341,6 @@
                         currentBlur = targetBlur;
                         blurRaf = null;
                     } else {
-                        // 0.06 lerp factor → ~2.5s to fully settle → cinematic feel
                         currentBlur += diff * 0.06;
                         blurRaf = requestAnimationFrame(lerpBlur);
                     }
@@ -376,13 +365,9 @@
                     });
                     if (best !== activeIdx) { activeIdx = best; activateIndex(best); }
 
-                    // Compute blur for bg-1 directly from distance to center.
-                    // Full blur (20px) when far away, sharp (0px) when centered.
-                    // Bidirectional: works equally on scroll-down and scroll-back-up.
                     if (portBgs[0]) {
                         const r0    = portItems[0].getBoundingClientRect();
                         const dist0 = Math.abs((r0.top + r0.height / 2) - mid);
-                        // Map: 0px dist → blur 0, (vh * 1.0) dist → blur 20px, clamped
                         const ratio = Math.min(dist0 / (window.innerHeight * 0.85), 1);
                         setBlurTarget(ratio * MAX_BLUR);
                     }
@@ -392,7 +377,6 @@
                 setTimeout(pickActive, 150);
 
             } else {
-                // DESKTOP: IntersectionObserver — blur handled by GSAP below, not via class
                 const portObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) activateIndex(portItems.indexOf(entry.target));
@@ -470,7 +454,6 @@
             return;
         }
 
-        // Mobile: IntersectionObserver (no GSAP)
         if (isMobile || !window.gsap || !window.ScrollTrigger) {
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -489,13 +472,12 @@
             return;
         }
 
-        // Desktop: GSAP ScrollTrigger batch reveals
         ScrollTrigger.batch(scrollRevealEls, {
             onEnter: batch => {
                 gsap.fromTo(batch,
-                    { y: 48, opacity: 0, skewX: -1.5, filter: 'blur(6px)' },
+                    { y: 48, opacity: 0, filter: 'blur(6px)' },
                     {
-                        y: 0, opacity: 1, skewX: 0, filter: 'blur(0px)',
+                        y: 0, opacity: 1, filter: 'blur(0px)',
                         duration: 1.15, ease: 'power3.out', stagger: 0.08,
                         onComplete() {
                             batch.forEach(el => {
@@ -539,29 +521,25 @@
 
         ScrollTrigger.refresh();
 
-        // Portfolio first bg: blur → unblur scrub
         const bg1         = document.getElementById('bg-1');
         const portSection = document.querySelector('.portfolio-showcase');
-        if (bg1 && portSection && !isMobile && portItems.length > 0) {
-            // Desktop: GSAP owns bg1 filter entirely. Remove CSS class to avoid conflicts.
+        const portItems_  = $$('.port-item');
+        if (bg1 && portSection && !isMobile && portItems_.length > 0) {
             bg1.classList.remove('blur-entry');
             bg1.style.filter = 'blur(20px) brightness(.35)';
 
             const blurProxy = { v: 20 };
             gsap.to(blurProxy, {
                 v: 0,
-                // ease is ignored with scrub — scrub number controls the lag/smoothness.
-                // scrub: 3 = 3s to catch up to scroll position → feels slow and cinematic.
                 onUpdate() {
                     bg1.style.filter = `blur(${blurProxy.v.toFixed(2)}px) brightness(.35)`;
                 },
                 scrollTrigger: {
-                    trigger: portItems[0],
-                    start:   'top 85%',      // begin earlier so the full ease is visible
-                    end:     'center center', // sharp when Wade Fit is perfectly centered
-                    scrub:   3,              // 3s lag = slow, eased in both scroll directions
+                    trigger: portItems_[0],
+                    start:   'top 85%',
+                    end:     'center center',
+                    scrub:   3,
                     onRefresh(self) {
-                        // If page loads mid-scroll, snap blur to correct value immediately
                         if (self.progress > 0) {
                             blurProxy.v = 20 * (1 - self.progress);
                             bg1.style.filter = `blur(${blurProxy.v.toFixed(2)}px) brightness(.35)`;
@@ -571,10 +549,54 @@
             });
         }
 
+        // ── TASK 01: Hero ruled lines parallax ──────────────
+        const heroLineTop = document.querySelector('.hero-line--top');
+        const heroLineMid = document.querySelector('.hero-line--mid');
+        if (heroLineTop && !isMobile && !REDUCED_MO) {
+            gsap.to(heroLineTop, {
+                yPercent: -35,
+                ease: 'none',
+                scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.8 }
+            });
+        }
+        if (heroLineMid && !isMobile && !REDUCED_MO) {
+            gsap.to(heroLineMid, {
+                yPercent: -18,
+                ease: 'none',
+                scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.2 }
+            });
+        }
+
+        // ── TASK 11: Scroll-triggered number counters ────────
+        const statNums = document.querySelectorAll('.results-num');
+        statNums.forEach(el => {
+            const raw    = el.textContent.trim();
+            const suffix = raw.replace(/[\d.]/g, '');
+            const target = parseFloat(raw);
+            if (isNaN(target)) return;
+            const obj = { val: 0 };
+            el.textContent = '0' + suffix;
+            ScrollTrigger.create({
+                trigger: el,
+                start: 'top 88%',
+                once: true,
+                onEnter: () => {
+                    gsap.to(obj, {
+                        val: target,
+                        duration: 1.9,
+                        ease: 'power2.out',
+                        onUpdate: () => {
+                            el.textContent = Math.round(obj.val) + suffix;
+                        }
+                    });
+                }
+            });
+        });
+
     }); // end window.load
 
     // ═══════════════════════════════════════════════════════════
-    // STEP 5: CUSTOM CURSOR v2 — desktop only
+    // STEP 5: CUSTOM CURSOR — desktop only
     // ═══════════════════════════════════════════════════════════
     const initCursor = () => {
         if (isMobile || REDUCED_MO) return;
@@ -609,14 +631,14 @@
                 if (node.dataset?.cursor)          return { type: 'hover',  label: node.dataset.cursor };
                 if (node.matches?.('input[type="text"], input[type="email"], input[type="tel"], textarea'))
                                                     return { type: 'text',   label: '' };
-                if (node.matches?.('.open-brief, .btn-glass-cta, .btn-gold, [data-cta]'))
+                if (node.matches?.('.open-brief, .btn-glass-cta, [data-cta]'))
                                                     return { type: 'hover',  label: 'START →' };
                 if (node.matches?.('.port-item'))   return { type: 'hover',  label: 'VIEW →' };
                 if (node.matches?.('.img-container, .img-inner'))
                                                     return { type: 'hover',  label: 'LOOK' };
                 if (node.matches?.('a[target="_blank"]'))
                                                     return { type: 'hover',  label: 'OPEN →' };
-                if (node.matches?.('.nav-link, .btn-ghost, .social-link, .mobile-link'))
+                if (node.matches?.('.nav-link, .btn-ghost, .social-link'))
                                                     return { type: 'hover',  label: 'GO →' };
                 if (node.matches?.('.close-brief, .scroll-top-btn'))
                                                     return { type: 'invert', label: '' };
@@ -654,19 +676,23 @@
 
     // ═══════════════════════════════════════════════════════════
     // STEP 6: MAGNETIC BUTTONS — desktop only
+    // will-change set only on mouseenter, cleared on mouseleave
     // ═══════════════════════════════════════════════════════════
     const initMagneticButtons = () => {
         if (isMobile || REDUCED_MO || !window.gsap) return;
 
         const targets = $$(
-            '.hero-section .btn-glass-cta, .hero-section .btn-gold, .hero-section .btn-ghost,' +
-            '.cta-section .btn-glass-cta, .cta-section .btn-gold, .cta-section .btn-ghost,' +
-            '.cta-inner .btn-glass-cta, .cta-inner .btn-gold'
+            '.hero-section .btn-glass-cta, .hero-section .btn-ghost,' +
+            '.cta-section .btn-glass-cta, .cta-section .btn-ghost,' +
+            '.cta-inner .btn-glass-cta'
         );
 
         targets.forEach(btn => {
             let rect = null;
-            const onEnter = () => { rect = btn.getBoundingClientRect(); btn.classList.remove('magnetic-idle'); };
+            const onEnter = () => {
+                rect = btn.getBoundingClientRect();
+                btn.style.willChange = 'transform';
+            };
             const onMove  = (e) => {
                 if (!rect) return;
                 const dx = (e.clientX - (rect.left + rect.width  / 2)) * 0.38;
@@ -675,12 +701,22 @@
             };
             const onLeave = () => {
                 rect = null;
-                gsap.to(btn, { x: 0, y: 0, duration: .7, ease: 'elastic.out(1,.45)',
-                    onComplete: () => btn.classList.add('magnetic-idle') });
+                gsap.to(btn, {
+                    x: 0, y: 0, duration: .7, ease: 'elastic.out(1,.45)',
+                    onComplete: () => { btn.style.willChange = 'auto'; }
+                });
             };
             btn.addEventListener('mouseenter', onEnter, { passive: true });
             btn.addEventListener('mousemove',  onMove,  { passive: true });
             btn.addEventListener('mouseleave', onLeave, { passive: true });
+        });
+
+        // Non-magnetic buttons: still get will-change on hover for perf
+        const allBtns = $$('.btn-glass-cta, .form-submit-btn');
+        allBtns.forEach(btn => {
+            if (targets.includes(btn)) return; // already handled
+            btn.addEventListener('mouseenter', () => { btn.style.willChange = 'transform'; }, { passive: true });
+            btn.addEventListener('mouseleave', () => { btn.style.willChange = 'auto'; },      { passive: true });
         });
     };
 
@@ -724,8 +760,8 @@
                         + Math.sin(x / W * Math.PI * tube.freq + t * tube.speed + tube.phase) * H * tube.amp
                         + Math.sin(x / W * Math.PI * tube.freq * 1.7 - t * tube.speed * 0.6 + tube.phase * 0.5) * H * tube.amp * 0.3;
                     if (mouseX > 0) {
-                        const mDist     = Math.abs(x - mouseX) / W;
-                        const attract   = Math.max(0, 1 - mDist * 2.5);
+                        const mDist   = Math.abs(x - mouseX) / W;
+                        const attract = Math.max(0, 1 - mDist * 2.5);
                         y += (mouseY - H * tube.ny) * 0.12 * attract;
                     }
                     pts.push({ x, y });
@@ -769,6 +805,20 @@
         }, { passive: true });
         section.addEventListener('mouseleave', () => { mouseX = -999; mouseY = -999; }, { passive: true });
         window.addEventListener('resize', () => { if (running) resize(); }, { passive: true });
+
+        // Pause neon canvas when tab is hidden
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                running = false; if (raf) cancelAnimationFrame(raf);
+            } else {
+                // Only restart if in viewport
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    running = true; loop();
+                }
+            }
+        });
+
         resize();
     };
 

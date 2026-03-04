@@ -51,7 +51,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net"     crossorigin>
 
-    <link rel="preload" as="image" href="1.avif" type="image/avif" fetchpriority="high">
+    <link rel="preload" as="image" href="3.avif" type="image/avif" fetchpriority="high">
     <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-ExtraBold.woff2"    crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/SpaceMono-Regular.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/SpaceMono-Bold.woff2"    crossorigin>
@@ -160,6 +160,13 @@
 <main id="main">
 
     <section class="hero-section" id="hero" aria-label="Introduction">
+
+        <!-- Task 01: Hero ruled lines -->
+        <div class="hero-lines" aria-hidden="true">
+            <div class="hero-line hero-line--top"></div>
+            <div class="hero-line hero-line--mid"></div>
+        </div>
+
         <div class="hero-top reveal-up">
             <div class="hero-left">
                 <h1 class="mega-type">
@@ -231,11 +238,16 @@
 
     <section id="portfolio" class="portfolio-showcase" aria-label="Selected work">
         <div class="portfolio-backgrounds" aria-hidden="true">
-            <img src="1.avif" class="port-bg is-active blur-entry" id="bg-1" alt="" width="1920" height="1080" fetchpriority="high" loading="eager"  decoding="sync">
+            <img src="3.avif" class="port-bg is-active blur-entry" id="bg-1" alt="" width="1920" height="1080" fetchpriority="high" loading="eager"  decoding="sync">
+            <div class="port-bg-tint" id="tint-1"></div>
             <img src="2.avif" class="port-bg"           id="bg-2" alt="" width="1920" height="1080" loading="lazy"  decoding="async">
-            <img src="3.avif" class="port-bg"           id="bg-3" alt="" width="1920" height="1080" loading="lazy"  decoding="async">
+            <div class="port-bg-tint" id="tint-2"></div>
+            <img src="1.avif" class="port-bg"           id="bg-3" alt="" width="1920" height="1080" loading="lazy"  decoding="async">
+            <div class="port-bg-tint" id="tint-3"></div>
             <img src="4.avif" class="port-bg"           id="bg-4" alt="" width="1920" height="1080" loading="lazy"  decoding="async">
+            <div class="port-bg-tint" id="tint-4"></div>
             <img src="5.avif" class="port-bg"           id="bg-5" alt="" width="1920" height="1080" loading="lazy"  decoding="async">
+            <div class="port-bg-tint" id="tint-5"></div>
             <div class="port-overlay"></div>
         </div>
 
@@ -251,14 +263,14 @@
                 </span>
             </div>
 
-            <a href="https://www.behance.net/gallery/144161981/Wade-Fit-Studio-Logo" target="_blank" rel="noopener noreferrer"
-               class="port-item is-active hover-trigger" data-target="bg-1" aria-label="View Wade Fit Studio project on Behance">
+            <a href="https://www.behance.net/gallery/162997763/LUMI-Creative-Agency-Logo" target="_blank" rel="noopener noreferrer"
+               class="port-item is-active hover-trigger" data-target="bg-1" aria-label="View Lumi Creative Agency project on Behance">
                 <div class="port-depth-num" aria-hidden="true">01</div>
                 <div class="port-text-wrap">
-                    <span class="port-meta">01 / FITNESS &nbsp;·&nbsp; Identity System · Motion</span>
-                    <h3 class="port-title">WADE FIT STUDIO</h3>
-                    <p class="port-desc">Toronto boutique fitness studio entering a saturated market. Built a kinetic identity system that positioned them as the premium option before they opened doors. — Toronto, Canada.</p>
-                    <span class="port-arrow">View identity system <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    <span class="port-meta">01 / AGENCY &nbsp;·&nbsp; Visual Language · Motion</span>
+                    <h3 class="port-title">LUMI CREATIVE</h3>
+                    <p class="port-desc">UAE creative agency competing in a market of identical-looking studios. Built a visual language distinct enough to attract international clients over local alternatives. — UAE market.</p>
+                    <span class="port-arrow">View visual language <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
 
@@ -273,14 +285,14 @@
                 </div>
             </a>
 
-            <a href="https://www.behance.net/gallery/162997763/LUMI-Creative-Agency-Logo" target="_blank" rel="noopener noreferrer"
-               class="port-item hover-trigger" data-target="bg-3" aria-label="View Lumi Creative Agency project on Behance">
+            <a href="https://www.behance.net/gallery/144161981/Wade-Fit-Studio-Logo" target="_blank" rel="noopener noreferrer"
+               class="port-item hover-trigger" data-target="bg-3" aria-label="View Wade Fit Studio project on Behance">
                 <div class="port-depth-num" aria-hidden="true">03</div>
                 <div class="port-text-wrap">
-                    <span class="port-meta">03 / AGENCY &nbsp;·&nbsp; Visual Language · Motion</span>
-                    <h3 class="port-title">LUMI CREATIVE</h3>
-                    <p class="port-desc">UAE creative agency competing in a market of identical-looking studios. Built a visual language distinct enough to attract international clients over local alternatives. — UAE market.</p>
-                    <span class="port-arrow">View visual language <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    <span class="port-meta">03 / FITNESS &nbsp;·&nbsp; Identity System · Motion</span>
+                    <h3 class="port-title">WADE FIT STUDIO</h3>
+                    <p class="port-desc">Toronto boutique fitness studio entering a saturated market. Built a kinetic identity system that positioned them as the premium option before they opened doors. — Toronto, Canada.</p>
+                    <span class="port-arrow">View identity system <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
 
@@ -403,22 +415,22 @@
                 <div class="process-item reveal-up hover-trigger">
                     <span class="process-num" aria-hidden="true">01</span>
                     <div>
-                        <h3 class="process-title">Own Your Market.</h3>
-                        <p class="process-body">We locate the exact gap in your market and engineer the visual system to own it completely. Strategy dictates every pixel.</p>
+                        <h3 class="process-title">I'll tell you if your positioning is wrong.</h3>
+                        <p class="process-body">Strategy before aesthetics, always. I locate the exact gap in your market and tell you what your brand needs to say — even when that challenges your assumptions. The logo follows the business logic, not the other way around.</p>
                     </div>
                 </div>
                 <div class="process-item reveal-up hover-trigger">
                     <span class="process-num" aria-hidden="true">02</span>
                     <div>
-                        <h3 class="process-title">Zero Dilution.</h3>
-                        <p class="process-body">One senior mind on your brand from day one. No layers, no lost context, no compromise between your vision and the final asset.</p>
+                        <h3 class="process-title">My hands on everything — or I don't take the project.</h3>
+                        <p class="process-body">No junior execution. No account handoffs. No telephone game between you and the person doing the work. One senior mind on your brand from brief to final delivery, with full context at every stage.</p>
                     </div>
                 </div>
                 <div class="process-item reveal-up hover-trigger">
                     <span class="process-num" aria-hidden="true">03</span>
                     <div>
-                        <h3 class="process-title">Deploy Instantly.</h3>
-                        <p class="process-body">Native files. Scalable systems. Delivered perfectly ready for your team to roll out globally from day one.</p>
+                        <h3 class="process-title">You get a system, not a file.</h3>
+                        <p class="process-body">Every asset is production-ready and structured for your team to roll out globally on day one — with zero back-and-forth. Native files, scalable architecture, 22-day average delivery. The brand is ready before the market is.</p>
                     </div>
                 </div>
             </div>
@@ -454,18 +466,18 @@
     <section class="results-section" aria-label="Results and impact">
         <div class="results-inner section-wrapper">
             <div class="results-stat reveal-up hover-trigger">
-                <span class="results-num">6+</span>
+                <span class="results-num" data-target="6">6+</span>
                 <span class="results-label">Years of Global Brand Strategy</span>
             </div>
             <div class="results-divider" aria-hidden="true"></div>
             <div class="results-stat reveal-up hover-trigger delay-1">
-                <span class="results-num">80%</span>
+                <span class="results-num" data-target="80">80%</span>
                 <span class="results-label">Clients Return</span>
             </div>
             <div class="results-divider" aria-hidden="true"></div>
             <div class="results-stat reveal-up hover-trigger delay-2">
-                <span class="results-num">3</span>
-                <span class="results-label">Continents — USA · UAE · Europe</span>
+                <span class="results-num" data-target="22">22</span>
+                <span class="results-label">Days Avg. Delivery</span>
             </div>
         </div>
     </section>
@@ -479,6 +491,9 @@
                 <div class="img-container reveal-up hover-trigger">
                     <div class="img-inner">
                         <img src="me.avif" alt="Ghaidak Alosh | Senior Brand Strategist" width="800" height="1000" loading="lazy" decoding="async">
+                    </div>
+                    <div class="img-caption" aria-hidden="true">
+                        <span class="img-caption-text">Senior Brand Strategist · 6+ Years · Global</span>
                     </div>
                 </div>
                 <div class="bio-container reveal-up">
@@ -517,8 +532,8 @@
     <section id="contact" class="cta-section" aria-label="Contact and start a project">
         <div class="cta-inner reveal-up">
             <div class="cta-eyebrow">Ready when you are.</div>
-            <h2 class="cta-headline">Your brand is<br><span class="cta-accent">your leverage.</span></h2>
-            <p class="cta-sub">One brief. One senior mind. One standard of execution.</p>
+            <h2 class="cta-headline">The gap between<br><span class="cta-accent">good and unforgettable</span><br>is one decision.</h2>
+            <p class="cta-sub">One brief. One senior mind. 22 days average delivery.<br>Founders across the USA, UAE, and Europe trust this process.</p>
             <div class="cta-actions">
                 <button class="btn-glass-cta open-brief hover-trigger"><span>Start Project</span></button>
             </div>
