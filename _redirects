@@ -1,1 +1,5 @@
-https://www.ghaidak.com/* https://ghaidak.com/:splat 301
+# www redirect is handled via Cloudflare Dashboard → Rules → Redirect Rules
+# (CF Pages _redirects does not support full-URL source matching)
+
+# If you add subpages later, use path-only rules like:
+# /old-page /new-page 301
