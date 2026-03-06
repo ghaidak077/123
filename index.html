@@ -48,16 +48,25 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
 
+    <meta name="color-scheme" content="dark">
+
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net"     crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
+    <!-- LCP image: highest priority, fetched immediately -->
     <link rel="preload" as="image" href="3.avif" type="image/avif" fetchpriority="high">
-    <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-ExtraBold.woff2"    crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-Bold.woff2"        crossorigin>
+    <!-- Critical fonts -->
+    <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-ExtraBold.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-Bold.woff2"      crossorigin>
+    <!-- effects.js: preload to download early, defer to not block render -->
+    <link rel="preload" as="script" href="effects.js?v=3">
 
-    <link rel="stylesheet" href="main.css">
+    <!-- Cache-bust: bump ?v= number on every deploy -->
+    <link rel="stylesheet" href="main.css?v=3">
     <script>document.documentElement.classList.remove('no-js');</script>
-    <script src="effects.js"></script>
+    <script src="effects.js?v=3" defer></script>
 
     <script type="application/ld+json">
     {
@@ -119,7 +128,7 @@
 </head>
 <body>
 
-
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <div class="scroll-progress" id="scrollProgress"></div>
 <div class="cursor" id="cursor" aria-hidden="true">
@@ -131,14 +140,11 @@
     <div class="vfx-glow"></div>
 </div>
 
-
 <button id="scrollNav" class="scroll-nav-btn" data-state="down" aria-label="Scroll to contact section">
     <span class="scroll-nav-arrow">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </span>
 </button>
-
-
 
 <nav class="hud-nav hover-trigger" aria-label="Primary navigation">
     <div class="hud-left">
@@ -158,10 +164,10 @@
 
     <section class="hero-section" id="hero" aria-label="Introduction">
 
-        <!-- DarkVeil WebGL: desktop-only animated background, aria-hidden, zero layout cost -->
+        <!-- DarkVeil WebGL: animated CPPN background, aria-hidden, zero layout cost -->
         <canvas id="hero-veil" aria-hidden="true" role="presentation"></canvas>
 
-        <!-- Task 01: Hero ruled lines -->
+        <!-- Hero ruled lines -->
         <div class="hero-lines" aria-hidden="true">
             <div class="hero-line hero-line--top"></div>
             <div class="hero-line hero-line--mid"></div>
@@ -610,10 +616,11 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
-<script src="app.js" defer></script>
+<!-- Cache-bust: bump ?v= number on every deploy, same as CSS/JS above -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer crossorigin="anonymous"></script>
+<script src="app.js?v=3" defer></script>
 
 <a href="https://wa.link/649ato" target="_blank" rel="noopener noreferrer"
    class="wa-float hover-trigger" aria-label="Chat on WhatsApp">

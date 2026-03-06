@@ -1,11 +1,15 @@
 {
+  "id": "/",
   "name": "Ghaidak Alosh",
   "short_name": "Ghaidak",
   "description": "Senior brand identity designer for ambitious founders worldwide.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "any",
   "theme_color": "#040404",
   "background_color": "#040404",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -17,13 +21,7 @@
       "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ]
 }
