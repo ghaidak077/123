@@ -341,7 +341,7 @@
                         currentBlur = targetBlur;
                         blurRaf = null;
                     } else {
-                        currentBlur += diff * 0.06;
+                        currentBlur += diff * 0.14; // snappier clear — was 0.06
                         blurRaf = requestAnimationFrame(lerpBlur);
                     }
                     if (portBgs[0]) {
@@ -374,7 +374,8 @@
                 };
 
                 window.addEventListener('scroll', pickActive, { passive: true });
-                setTimeout(pickActive, 150);
+                window.addEventListener('resize', pickActive, { passive: true });
+                requestAnimationFrame(() => requestAnimationFrame(pickActive));
 
             } else {
                 const portObserver = new IntersectionObserver((entries) => {
@@ -445,6 +446,37 @@
         }
 
         // ── Reveal animations ─────────────────────────────────
+        // ── Counter animations — universal, IO-based, no GSAP needed ──
+        {
+            const statNums = document.querySelectorAll('.results-num[data-target]');
+            if (statNums.length) {
+                const runCounter = (el) => {
+                    const target = parseFloat(el.dataset.target);
+                    const suffix = el.textContent.trim().replace(/[\d.]/g, '');
+                    if (isNaN(target)) return;
+                    const dur = 1700;
+                    let startTs = null;
+                    el.textContent = '0' + suffix;
+                    const tick = (ts) => {
+                        if (!startTs) startTs = ts;
+                        const p  = Math.min((ts - startTs) / dur, 1);
+                        const ep = 1 - Math.pow(1 - p, 3); // ease-out-cubic
+                        el.textContent = Math.round(ep * target) + suffix;
+                        if (p < 1) requestAnimationFrame(tick);
+                    };
+                    requestAnimationFrame(tick);
+                };
+                const cIO = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (!e.isIntersecting) return;
+                        cIO.unobserve(e.target);
+                        runCounter(e.target);
+                    });
+                }, { threshold: 0.4 });
+                statNums.forEach(el => cIO.observe(el));
+            }
+        }
+
         if (REDUCED_MO) {
             scrollRevealEls.forEach(el => {
                 el.classList.remove('reveal-ready');
@@ -567,31 +599,6 @@
             });
         }
 
-        // ── TASK 11: Scroll-triggered number counters ────────
-        const statNums = document.querySelectorAll('.results-num');
-        statNums.forEach(el => {
-            const raw    = el.textContent.trim();
-            const suffix = raw.replace(/[\d.]/g, '');
-            const target = parseFloat(raw);
-            if (isNaN(target)) return;
-            const obj = { val: 0 };
-            el.textContent = '0' + suffix;
-            ScrollTrigger.create({
-                trigger: el,
-                start: 'top 88%',
-                once: true,
-                onEnter: () => {
-                    gsap.to(obj, {
-                        val: target,
-                        duration: 1.9,
-                        ease: 'power2.out',
-                        onUpdate: () => {
-                            el.textContent = Math.round(obj.val) + suffix;
-                        }
-                    });
-                }
-            });
-        });
 
     }); // end window.load
 

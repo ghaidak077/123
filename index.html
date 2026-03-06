@@ -53,8 +53,7 @@
 
     <link rel="preload" as="image" href="3.avif" type="image/avif" fetchpriority="high">
     <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-ExtraBold.woff2"    crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="fonts/SpaceMono-Regular.woff2" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="fonts/SpaceMono-Bold.woff2"    crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/Syne-Bold.woff2"        crossorigin>
 
     <link rel="stylesheet" href="main.css">
     <script>document.documentElement.classList.remove('no-js');</script>
@@ -158,6 +157,9 @@
 <main id="main">
 
     <section class="hero-section" id="hero" aria-label="Introduction">
+
+        <!-- DarkVeil WebGL: desktop-only animated background, aria-hidden, zero layout cost -->
+        <canvas id="hero-veil" aria-hidden="true" role="presentation"></canvas>
 
         <!-- Task 01: Hero ruled lines -->
         <div class="hero-lines" aria-hidden="true">
