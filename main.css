@@ -655,10 +655,10 @@ html:not(.no-js) .hero-section .reveal-up.gsap-animated { animation:none; }
 }
 
 .port-intro-block {
-    min-height: 60svh;
+    min-height: unset;
     display: flex; flex-direction: column;
     justify-content: center;
-    padding: clamp(4rem,8vh,7rem) var(--pad-x) clamp(2.5rem,5vh,4rem);
+    padding: clamp(3rem,6vh,5.5rem) var(--pad-x) clamp(2rem,4vh,3rem);
     position: relative; z-index: 10;
 }
 .port-header-override { position:relative; z-index:10; margin-bottom:0; padding-left:0; padding-right:0; }
@@ -696,7 +696,7 @@ html:not(.no-js) .hero-section .reveal-up.gsap-animated { animation:none; }
    Equal 3-column grid — all 5 cards same width.
    5th card is centred in its row via justify-items.
 ════════════════════════════════════════════════════════════ */
-.testimonials-section { }
+.testimonials-section { position:relative; z-index:20; background:var(--bg); }
 .editorial-reviews-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1049,9 +1049,9 @@ html:not(.no-js) .hero-section .reveal-up.gsap-animated { animation:none; }
     .port-all-link     { padding:3.5rem var(--pad-x); min-height:unset; }
 
     .port-intro-block {
-        min-height: 50svh;
-        padding-top: clamp(3rem,6vh,5rem);
-        padding-bottom: clamp(2rem,4vh,3rem);
+        min-height: unset;
+        padding-top: clamp(2.5rem,5vh,4rem);
+        padding-bottom: clamp(1.5rem,3vh,2.5rem);
         padding-left: var(--pad-x); padding-right: var(--pad-x);
     }
     .port-intro-sub { max-width: 100%; font-size: .88rem; line-height:1.65; }
@@ -1073,7 +1073,7 @@ html:not(.no-js) .hero-section .reveal-up.gsap-animated { animation:none; }
     .er-name   { font-size:0.72rem; }
     .er-role   { font-size:0.52rem; }
 
-    #expertise > .section-wrapper { padding:3rem var(--pad-x); }
+    #expertise > .section-wrapper { padding:3rem var(--pad-x); position:relative; z-index:20; background:var(--bg); }
     .process-list { margin-bottom:3rem; }
     .process-item { grid-template-columns:44px 1fr; gap:1rem; padding:1.5rem 0; }
     .process-item:hover { background:transparent; padding-left:0; transform:none; }
@@ -1346,6 +1346,7 @@ html:not(.no-js) .hero-section .reveal-up.gsap-animated { animation:none; }
    HOW IT STARTS SECTION
 ════════════════════════════════════════════════════════════ */
 .how-section {
+    position:relative; z-index:20; background:var(--bg);
     border-top:1px solid var(--glass-border);
     background:var(--bg-alt);
     position:relative; overflow:hidden;
@@ -1642,8 +1643,14 @@ html:not(.no-js) .hero-section .reveal-up.gsap-animated { animation:none; }
     .how-footer { padding-top:2rem; }
     .contact-wrap { grid-template-columns:1fr; gap:2.5rem; }
     .contact-headline { font-size:clamp(1.5rem,6vw,2rem); }
-    .contact-channels { grid-template-columns:1fr; }
-    .channel-btn { flex-direction:row; align-items:center; padding:.9rem 1.1rem; }
+    .contact-channels { grid-template-columns:1fr; gap:.5rem; }
+    .channel-btn { flex-direction:row; align-items:center; padding:.85rem 1rem; }
+    .channel-btn-left { gap:.7rem; flex:1; min-width:0; }
+    .channel-btn-label { gap:.12rem; }
+    .channel-btn-name { font-size:.62rem; }
+    .channel-btn-sub { font-size:.56rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .channel-btn-arrow { font-size:.54rem; flex-shrink:0; white-space:nowrap; }
+    .channel-btn svg { width:16px; height:16px; }
     .qf-row-2 { grid-template-columns:1fr; gap:.65rem; }
     .quick-form { padding:1.5rem 1.25rem; gap:1.1rem; border-radius:16px; }
     .qf-group { gap:.55rem; }
