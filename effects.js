@@ -266,9 +266,8 @@
         gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
         // ── Resize handler ───────────────────────────────────────
-        // Scale: 0.40 on mobile (saves ~75% fill cost), 0.65 on desktop
-        // Both capped at DPR 1.5 to avoid excessive resolution on high-DPI screens
-        var SCALE = window.matchMedia('(max-width:1024px)').matches ? 0.40 : 0.65;
+        // Scale: 0.30 mobile, 0.50 desktop — background shader, no need for high res
+        var SCALE = window.matchMedia('(max-width:1024px)').matches ? 0.30 : 0.50;
         function resize() {
             var w   = heroEl.offsetWidth  || window.innerWidth;
             var h   = heroEl.offsetHeight || window.innerHeight;
@@ -286,19 +285,23 @@
         var rafId       = 0;
         var running     = false;
         var heroVisible = true;
+        var lastFrame   = 0;
+        var FRAME_MS    = 1000 / 30; // throttle to 30fps — imperceptible on a slow background
 
-        function loop() {
+        function loop(now) {
             if (!running) return;
-            // speed=2.0 — fast, cinematic motion across the CPPN field
-            gl.uniform1f(uTime, ((performance.now() - startTime) * 0.001) * 2.0);
-            gl.drawArrays(gl.TRIANGLES, 0, 3);
             rafId = requestAnimationFrame(loop);
+            if (now - lastFrame < FRAME_MS) return; // skip frame
+            lastFrame = now;
+            gl.uniform1f(uTime, ((now - startTime) * 0.001) * 1.4); // speed 2.0→1.4: smoother, less GPU churn
+            gl.drawArrays(gl.TRIANGLES, 0, 3);
         }
 
         function start() {
             if (running || document.hidden) return;
             running = true;
-            loop();
+            lastFrame = 0;
+            rafId = requestAnimationFrame(loop);
         }
         function stop() {
             running = false;
@@ -331,9 +334,6 @@
         });
     }
 
-    // Run immediately — synchronous DOM parse time
-    // At this point <body> hasn't been parsed yet if script is in <head>,
-    // so we need DOMContentLoaded for safety.
     // Run immediately — synchronous DOM parse time
     // At this point <body> hasn't been parsed yet if script is in <head>,
     // so we need DOMContentLoaded for safety.
