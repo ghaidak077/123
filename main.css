@@ -878,6 +878,17 @@ html:not(.no-js) .hero-section .reveal-up.gsap-animated { animation:none; }
     font-family:var(--font-b); font-size:.58rem; color:var(--muted); font-weight:700;
     text-transform:uppercase; letter-spacing:.1em; position:relative; z-index:20;
 }
+.footer-closing {
+    width:100%; display:block; font-family:var(--font-b); font-size:.7rem; color:var(--ink);
+    letter-spacing:.08em; text-transform:uppercase; border-bottom:1px solid var(--glass-border);
+    padding-bottom:.875rem; margin-bottom:.125rem;
+}
+.footer-bottom-row {
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:.875rem; width:100%;
+}
+.site-footer > span:not(.footer-closing), .site-footer > a {
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:.875rem;
+}
 
 /* ════════════════════════════════════════════════════════════
    WHATSAPP FLOAT
@@ -1610,6 +1621,15 @@ html:not(.no-js) .hero-section .reveal-up.gsap-animated { animation:none; }
 .qf-submit:active { transform:translateY(0); }
 .qf-input.qf-error { border-color:rgba(220,38,38,0.55) !important; }
 
+/* ── Pricing anchor note ── */
+.qf-pricing-note {
+    font-family:var(--font-b); font-size:.52rem; font-weight:700;
+    color:rgba(245,245,240,0.28); letter-spacing:.06em; text-transform:uppercase;
+    text-align:center; line-height:1.6;
+    padding:.5rem 0 .25rem;
+    border-top:1px solid rgba(255,255,255,0.05);
+}
+
 /* ── Footer email ── */
 .footer-email {
     font-family:var(--font-b); font-size:.58rem; font-weight:700;
@@ -1665,3 +1685,13 @@ html:not(.no-js) .hero-section .reveal-up.gsap-animated { animation:none; }
 @media(max-width:480px) {
     .contact-headline { font-size:clamp(1.35rem,5.5vw,1.75rem); }
 }
+
+/* ── Pricing anchor note ── */
+.qf-pricing-note {
+    font-family:var(--font-b); font-size:.52rem; font-weight:700;
+    color:rgba(245,245,240,0.28); letter-spacing:.06em; text-transform:uppercase;
+    text-align:center; line-height:1.6;
+    padding:.5rem 0 .25rem;
+    border-top:1px solid rgba(255,255,255,0.05);
+}
+
